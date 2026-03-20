@@ -6,978 +6,948 @@
   <title>Jakang Lee</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
     :root {
-      --accent: #1a56c4;
-      --accent-light: #e8f0fe;
+      --sidebar-w: 252px;
+      --accent: #2563eb;
       --text: #111827;
-      --text-secondary: #374151;
+      --sub: #374151;
       --muted: #6b7280;
-      --bg: #f9fafb;
-      --card: #ffffff;
       --border: #e5e7eb;
+      --bg: #ffffff;
+      --sidebar-bg: #f9fafb;
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: 'Inter', -apple-system, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      font-size: 15.5px;
+    html, body {
+      height: 100%;
+      font-family: 'Inter', system-ui, sans-serif;
+      font-size: 15px;
       line-height: 1.7;
+      color: var(--text);
+      background: var(--bg);
       -webkit-font-smoothing: antialiased;
     }
 
-    /* ── NAV ── */
-    nav {
+    /* ══════════════════════════════
+       SIDEBAR
+    ══════════════════════════════ */
+    .sidebar {
       position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 200;
-      background: rgba(255,255,255,0.95);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
+      top: 0; left: 0; bottom: 0;
+      width: var(--sidebar-w);
+      background: var(--sidebar-bg);
+      border-right: 1px solid var(--border);
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      padding: 2.5rem 1.75rem 2rem;
+      z-index: 100;
+    }
+
+    .sidebar-photo {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #2563eb, #1e40af);
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      padding: 0 3rem;
-      height: 60px;
-    }
-    .nav-name {
+      justify-content: center;
+      font-size: 2.2rem;
       font-weight: 700;
-      font-size: 1rem;
-      color: var(--text);
-      cursor: pointer;
-      letter-spacing: -0.01em;
+      color: #fff;
+      letter-spacing: -1px;
+      margin-bottom: 1.1rem;
+      overflow: hidden;
+      flex-shrink: 0;
     }
-    .nav-links { display: flex; gap: 0; }
-    .nav-tab {
+    .sidebar-photo img { width: 100%; height: 100%; object-fit: cover; }
+
+    .sidebar-name {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      margin-bottom: 0.3rem;
+    }
+    .sidebar-role {
+      font-size: 0.82rem;
+      color: var(--accent);
+      font-weight: 600;
+      line-height: 1.4;
+      margin-bottom: 0.15rem;
+    }
+    .sidebar-affil {
+      font-size: 0.8rem;
       color: var(--muted);
-      font-size: 0.9rem;
-      font-weight: 500;
-      padding: 0 1.2rem;
-      height: 60px;
+      line-height: 1.4;
+      margin-bottom: 1.5rem;
+    }
+
+    .sidebar-links {
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+      margin-bottom: 2rem;
+    }
+    .sidebar-links a {
       display: flex;
       align-items: center;
-      border-bottom: 2px solid transparent;
-      cursor: pointer;
-      transition: color 0.15s, border-color 0.15s;
-      background: none;
-      border-top: none;
-      border-left: none;
-      border-right: none;
-      font-family: inherit;
+      gap: 0.5rem;
+      font-size: 0.82rem;
+      color: var(--sub);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.12s;
     }
-    .nav-tab:hover { color: var(--text); }
-    .nav-tab.active {
+    .sidebar-links a:hover { color: var(--accent); }
+    .sidebar-links a svg {
+      width: 14px; height: 14px;
+      flex-shrink: 0;
+      opacity: 0.6;
+    }
+
+    .sidebar-divider {
+      height: 1px;
+      background: var(--border);
+      margin-bottom: 1.25rem;
+    }
+
+    .sidebar-nav {
+      display: flex;
+      flex-direction: column;
+      gap: 0.1rem;
+    }
+    .nav-item {
+      display: block;
+      padding: 0.45rem 0.75rem;
+      border-radius: 6px;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--muted);
+      cursor: pointer;
+      background: none;
+      border: none;
+      font-family: inherit;
+      text-align: left;
+      width: 100%;
+      transition: background 0.12s, color 0.12s;
+    }
+    .nav-item:hover { background: #f0f0f0; color: var(--text); }
+    .nav-item.active {
+      background: #eff6ff;
       color: var(--accent);
-      border-bottom-color: var(--accent);
       font-weight: 600;
     }
 
-    /* ── PAGE WRAPPER ── */
+    /* ══════════════════════════════
+       MAIN CONTENT
+    ══════════════════════════════ */
+    .main {
+      margin-left: var(--sidebar-w);
+      min-height: 100vh;
+    }
+
     .page {
       display: none;
-      max-width: 820px;
-      margin: 0 auto;
-      padding: 90px 2.5rem 6rem;
+      max-width: 680px;
+      padding: 3.5rem 3.5rem 6rem;
       animation: fadeIn 0.18s ease;
     }
     .page.active { display: block; }
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(6px); }
+      from { opacity: 0; transform: translateY(5px); }
       to   { opacity: 1; transform: translateY(0); }
     }
 
-    /* ── ABOUT HERO ── */
-    .about-layout {
-      display: flex;
-      gap: 3.5rem;
-      align-items: flex-start;
+    /* ══════════════════════════════
+       TYPOGRAPHY HELPERS
+    ══════════════════════════════ */
+    .page-title {
+      font-size: 1.6rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: var(--text);
+      margin-bottom: 2rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section-heading {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      margin: 2.5rem 0 1rem;
+    }
+
+    /* ══════════════════════════════
+       ABOUT PAGE
+    ══════════════════════════════ */
+    .about-bio {
+      font-size: 0.975rem;
+      color: var(--sub);
+      line-height: 1.85;
       margin-bottom: 0;
     }
-    .about-photo-col {
-      flex-shrink: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 1.25rem;
-      width: 192px;
-    }
-    .about-photo {
-      width: 172px;
-      height: 172px;
-      border-radius: 14px;
-      background: linear-gradient(145deg, #1a56c4 0%, #0e3f7a 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 3.2rem;
-      color: white;
-      font-weight: 700;
-      letter-spacing: -2px;
-      box-shadow: 0 4px 24px rgba(26,86,196,0.2);
-      overflow: hidden;
-    }
-    .about-photo img { width: 100%; height: 100%; object-fit: cover; }
-    .about-contact-list {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      gap: 0.55rem;
-    }
-    .about-contact-list a {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-size: 0.875rem;
-      color: var(--accent);
-      text-decoration: none;
-      font-weight: 500;
-    }
-    .about-contact-list a:hover { text-decoration: underline; }
-    .about-contact-icon { width: 16px; text-align: center; flex-shrink: 0; font-size: 0.9rem; }
 
-    .about-text-col { flex: 1; padding-top: 0.25rem; }
-    .about-text-col h1 {
-      font-size: 2.5rem;
-      font-weight: 800;
-      letter-spacing: -0.04em;
-      line-height: 1.1;
-      margin-bottom: 0.4rem;
-      color: var(--text);
+    .interest-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
     }
-    .about-role {
-      font-size: 1.05rem;
-      color: var(--accent);
-      font-weight: 600;
-      margin-bottom: 0.25rem;
-    }
-    .about-affil {
-      color: var(--muted);
-      font-size: 0.95rem;
-      margin-bottom: 1.25rem;
-      line-height: 1.5;
-    }
-    .about-bio {
-      font-size: 1rem;
-      color: var(--text-secondary);
-      line-height: 1.8;
-    }
-
-    /* ── ABOUT SECTION HEADINGS ── */
-    .about-section-title {
-      font-size: 1.15rem;
-      font-weight: 700;
-      color: var(--text);
-      margin: 2.5rem 0 1rem;
-      padding-bottom: 0.5rem;
-      border-bottom: 2px solid var(--border);
-      letter-spacing: -0.01em;
-    }
-
-    /* ── INTEREST TAGS ── */
-    .interest-list { display: flex; flex-wrap: wrap; gap: 0.5rem; }
     .interest-tag {
-      background: var(--card);
-      border: 1.5px solid var(--border);
-      border-radius: 8px;
-      padding: 0.4rem 1rem;
-      font-size: 0.9rem;
-      font-weight: 500;
-      color: var(--text-secondary);
+      border: 1px solid var(--border);
+      border-radius: 5px;
+      padding: 0.3rem 0.75rem;
+      font-size: 0.85rem;
+      color: var(--sub);
     }
 
-    /* ── AWARDS ── */
-    .award-list { display: flex; flex-direction: column; }
-    .award-item {
-      display: flex;
-      gap: 1.25rem;
+    /* ── Education ── */
+    .edu-item {
       padding: 1rem 0;
       border-bottom: 1px solid var(--border);
-      align-items: flex-start;
     }
-    .award-item:last-child { border-bottom: none; }
-    .award-year {
-      flex-shrink: 0;
-      width: 44px;
-      font-size: 0.85rem;
-      font-weight: 700;
-      color: var(--accent);
-      padding-top: 0.15rem;
-    }
-    .award-title { font-size: 0.975rem; font-weight: 600; color: var(--text); }
-    .award-body { font-size: 0.9rem; color: var(--muted); margin-top: 0.2rem; line-height: 1.5; }
-
-    /* ── EDUCATION ── */
-    .edu-list { display: flex; flex-direction: column; }
-    .edu-item {
-      padding: 1.1rem 0;
-      border-bottom: 1px solid var(--border);
-    }
-    .edu-item:last-child { border-bottom: none; }
-    .edu-header {
+    .edu-item:first-child { padding-top: 0; }
+    .edu-item:last-child { border-bottom: none; padding-bottom: 0; }
+    .edu-row {
       display: flex;
       justify-content: space-between;
       align-items: baseline;
+      gap: 0.5rem;
       flex-wrap: wrap;
-      gap: 0.4rem;
-      margin-bottom: 0.2rem;
     }
-    .edu-school { font-weight: 700; font-size: 1rem; color: var(--text); }
-    .edu-period { font-size: 0.875rem; color: var(--muted); }
-    .edu-degree { font-size: 0.95rem; color: var(--accent); font-weight: 500; margin-bottom: 0.15rem; }
-    .edu-loc { font-size: 0.875rem; color: var(--muted); }
+    .edu-school { font-weight: 600; font-size: 0.95rem; }
+    .edu-period { font-size: 0.82rem; color: var(--muted); white-space: nowrap; }
+    .edu-degree { font-size: 0.9rem; color: var(--sub); margin-top: 0.1rem; }
+    .edu-loc { font-size: 0.82rem; color: var(--muted); }
     .edu-honors {
-      margin-top: 0.55rem;
+      margin-top: 0.5rem;
       display: flex;
       flex-wrap: wrap;
-      gap: 0.4rem;
+      gap: 0.35rem;
     }
-    .edu-honor-tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.25rem;
-      background: var(--accent-light);
-      color: var(--accent);
-      border-radius: 6px;
-      padding: 0.25rem 0.7rem;
-      font-size: 0.825rem;
+    .honor-tag {
+      font-size: 0.78rem;
       font-weight: 600;
+      color: var(--accent);
+      background: #eff6ff;
+      border-radius: 4px;
+      padding: 0.15rem 0.55rem;
     }
 
-    /* ── SKILLS ── */
-    .skills-grid { display: flex; flex-direction: column; gap: 0.9rem; }
-    .skill-row { display: flex; align-items: flex-start; gap: 1rem; }
-    .skill-label {
+    /* ── Awards ── */
+    .award-item {
+      display: flex;
+      gap: 1.25rem;
+      padding: 0.9rem 0;
+      border-bottom: 1px solid var(--border);
+      align-items: flex-start;
+    }
+    .award-item:first-child { padding-top: 0; }
+    .award-item:last-child { border-bottom: none; padding-bottom: 0; }
+    .award-year {
       flex-shrink: 0;
-      width: 150px;
-      font-size: 0.825rem;
-      font-weight: 700;
+      font-size: 0.82rem;
+      font-weight: 600;
       color: var(--muted);
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      padding-top: 0.35rem;
+      width: 40px;
+      padding-top: 0.1rem;
     }
-    .skill-tags { display: flex; flex-wrap: wrap; gap: 0.45rem; }
-    .skill-tag {
-      background: var(--card);
-      border: 1.5px solid var(--border);
-      border-radius: 6px;
-      padding: 0.3rem 0.75rem;
-      font-size: 0.875rem;
-      font-weight: 500;
-      color: var(--text-secondary);
-    }
+    .award-title { font-size: 0.925rem; font-weight: 600; }
+    .award-body { font-size: 0.875rem; color: var(--muted); margin-top: 0.15rem; }
 
-    /* ── SHARED SECTION TITLES ── */
-    .section-title {
-      font-size: 1.75rem;
-      font-weight: 800;
-      letter-spacing: -0.03em;
-      margin-bottom: 1.75rem;
-      color: var(--text);
+    /* ── Skills ── */
+    .skills-table {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
     }
-    .subsection-title {
-      font-size: 1.15rem;
-      font-weight: 700;
-      color: var(--text);
-      margin: 3rem 0 1.25rem;
-      padding-bottom: 0.5rem;
-      border-bottom: 2px solid var(--border);
-      letter-spacing: -0.01em;
+    .skill-row { display: flex; gap: 1.25rem; align-items: flex-start; }
+    .skill-cat {
+      flex-shrink: 0;
+      width: 130px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--muted);
+      padding-top: 0.25rem;
     }
+    .skill-val { font-size: 0.9rem; color: var(--sub); }
 
-    /* ── PUBLICATIONS ── */
+    /* ══════════════════════════════
+       PUBLICATIONS
+    ══════════════════════════════ */
     .pub-filter {
       display: flex;
-      gap: 0.5rem;
+      gap: 0.4rem;
       flex-wrap: wrap;
       margin-bottom: 1.75rem;
     }
     .pub-filter button {
-      border: 1.5px solid var(--border);
-      background: var(--card);
-      border-radius: 8px;
-      padding: 0.4rem 1.1rem;
-      font-size: 0.875rem;
-      font-weight: 600;
+      border: 1px solid var(--border);
+      background: none;
+      border-radius: 5px;
+      padding: 0.3rem 0.85rem;
+      font-size: 0.83rem;
+      font-weight: 500;
       cursor: pointer;
       color: var(--muted);
-      transition: all 0.15s;
       font-family: inherit;
+      transition: all 0.12s;
     }
-    .pub-filter button.active,
-    .pub-filter button:hover {
-      background: var(--accent);
-      border-color: var(--accent);
-      color: white;
+    .pub-filter button:hover { color: var(--text); border-color: #9ca3af; }
+    .pub-filter button.active {
+      background: var(--text);
+      border-color: var(--text);
+      color: #fff;
+      font-weight: 600;
     }
+
     .pub-item {
       display: flex;
-      gap: 1.25rem;
-      padding: 1.25rem 0;
+      gap: 1rem;
+      padding: 1.1rem 0;
       border-bottom: 1px solid var(--border);
-      align-items: flex-start;
     }
-    .pub-item:last-child { border-bottom: none; }
+    .pub-item:first-child { padding-top: 0; }
+    .pub-item:last-child { border-bottom: none; padding-bottom: 0; }
     .pub-item.hidden { display: none; }
-    .pub-year-badge {
+
+    .pub-num {
       flex-shrink: 0;
-      width: 50px;
-      text-align: center;
-      background: var(--accent);
-      color: white;
-      border-radius: 6px;
+      width: 28px;
       font-size: 0.8rem;
-      font-weight: 700;
-      padding: 0.3rem 0;
-      margin-top: 0.15rem;
+      color: var(--muted);
+      font-weight: 500;
+      padding-top: 0.1rem;
+      text-align: right;
     }
-    .pub-title { font-size: 1rem; font-weight: 600; line-height: 1.5; color: var(--text); }
-    .pub-authors { font-size: 0.9rem; color: var(--muted); margin-top: 0.3rem; line-height: 1.6; }
-    .pub-authors strong { color: var(--text); font-weight: 700; }
-    .pub-venue { font-size: 0.9rem; font-weight: 600; color: var(--accent); margin-top: 0.2rem; }
+    .pub-body {}
+    .pub-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.5;
+    }
     .pub-award-badge {
       display: inline-block;
-      background: #fef3c7;
-      color: #92400e;
-      border-radius: 4px;
-      padding: 0.1rem 0.45rem;
-      font-size: 0.78rem;
+      background: #fef9c3;
+      color: #854d0e;
+      border-radius: 3px;
+      padding: 0.05rem 0.4rem;
+      font-size: 0.72rem;
       font-weight: 700;
-      margin-left: 0.4rem;
+      margin-left: 0.35rem;
       vertical-align: middle;
     }
+    .pub-authors {
+      font-size: 0.875rem;
+      color: var(--muted);
+      margin-top: 0.25rem;
+      line-height: 1.55;
+    }
+    .pub-authors strong { color: var(--sub); font-weight: 600; }
+    .pub-venue {
+      font-size: 0.875rem;
+      color: var(--sub);
+      font-style: italic;
+      margin-top: 0.15rem;
+    }
 
-    /* ── PATENTS ── */
-    .patent-list { display: flex; flex-direction: column; }
+    /* Patents */
     .patent-item {
-      padding: 1rem 0;
+      padding: 0.9rem 0;
       border-bottom: 1px solid var(--border);
-      font-size: 0.95rem;
-      color: var(--text-secondary);
+      font-size: 0.9rem;
+      color: var(--sub);
       line-height: 1.7;
     }
-    .patent-item:last-child { border-bottom: none; }
+    .patent-item:first-child { padding-top: 0; }
+    .patent-item:last-child { border-bottom: none; padding-bottom: 0; }
     .patent-id {
-      display: inline-block;
-      background: var(--accent-light);
-      color: var(--accent);
-      border-radius: 5px;
-      padding: 0.15rem 0.55rem;
-      font-size: 0.8rem;
+      font-size: 0.77rem;
       font-weight: 700;
-      margin-right: 0.45rem;
-      vertical-align: middle;
+      color: var(--accent);
+      background: #eff6ff;
+      border-radius: 4px;
+      padding: 0.1rem 0.45rem;
+      margin-right: 0.4rem;
     }
-    .patent-status {
-      font-size: 0.85rem;
-      color: var(--muted);
-      font-style: italic;
-      margin-left: 0.3rem;
-    }
+    .patent-status { color: var(--muted); font-style: italic; font-size: 0.85rem; }
 
-    /* ── TIMELINE ── */
-    .timeline { position: relative; padding-left: 1.75rem; }
-    .timeline::before {
-      content: '';
-      position: absolute;
-      left: 4px; top: 10px; bottom: 10px;
-      width: 2px;
-      background: var(--border);
+    /* ══════════════════════════════
+       EXPERIENCE
+    ══════════════════════════════ */
+    .exp-item {
+      padding: 1.1rem 0;
+      border-bottom: 1px solid var(--border);
     }
-    .tl-item { position: relative; margin-bottom: 2.5rem; }
-    .tl-item:last-child { margin-bottom: 0; }
-    .tl-item::before {
-      content: '';
-      position: absolute;
-      left: -1.75rem; top: 9px;
-      width: 10px; height: 10px;
-      border-radius: 50%;
-      background: var(--accent);
-      border: 2px solid white;
-      box-shadow: 0 0 0 2px var(--accent);
-    }
-    .tl-header {
+    .exp-item:first-child { padding-top: 0; }
+    .exp-item:last-child { border-bottom: none; padding-bottom: 0; }
+    .exp-row {
       display: flex;
       justify-content: space-between;
       align-items: baseline;
-      flex-wrap: wrap;
       gap: 0.5rem;
-      margin-bottom: 0.2rem;
+      flex-wrap: wrap;
     }
-    .tl-title { font-weight: 700; font-size: 1rem; color: var(--text); }
-    .tl-period { font-size: 0.875rem; color: var(--muted); }
-    .tl-role { font-size: 0.95rem; color: var(--accent); font-weight: 500; margin-bottom: 0.1rem; }
-    .tl-loc { font-size: 0.875rem; color: var(--muted); margin-bottom: 0.1rem; }
-    .tl-desc { margin-top: 0.5rem; padding-left: 1.1rem; list-style: disc; font-size: 0.925rem; color: var(--text-secondary); }
-    .tl-desc li { margin-bottom: 0.25rem; }
+    .exp-org { font-weight: 600; font-size: 0.95rem; }
+    .exp-period { font-size: 0.82rem; color: var(--muted); white-space: nowrap; }
+    .exp-role { font-size: 0.9rem; color: var(--accent); font-weight: 500; margin-top: 0.1rem; }
+    .exp-loc { font-size: 0.82rem; color: var(--muted); margin-top: 0.05rem; }
+    .exp-desc {
+      margin-top: 0.5rem;
+      padding-left: 1rem;
+      list-style: disc;
+      font-size: 0.9rem;
+      color: var(--sub);
+    }
+    .exp-desc li { margin-bottom: 0.2rem; }
 
-    /* ── OPEN SOURCE ── */
-    .oss-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
-      gap: 1.25rem;
+    /* ══════════════════════════════
+       OPEN SOURCE
+    ══════════════════════════════ */
+    .oss-item {
+      padding: 1.1rem 0;
+      border-bottom: 1px solid var(--border);
     }
-    .oss-card {
-      background: var(--card);
-      border: 1.5px solid var(--border);
-      border-radius: 12px;
-      padding: 1.5rem 1.6rem;
-    }
-    .oss-card-header {
+    .oss-item:first-child { padding-top: 0; }
+    .oss-item:last-child { border-bottom: none; padding-bottom: 0; }
+    .oss-row {
       display: flex;
       justify-content: space-between;
-      align-items: flex-start;
+      align-items: baseline;
       gap: 0.5rem;
-      margin-bottom: 0.35rem;
+      flex-wrap: wrap;
+      margin-bottom: 0.2rem;
     }
-    .oss-card h3 { font-size: 0.975rem; font-weight: 700; }
-    .oss-card h3 a { text-decoration: none; color: var(--accent); }
-    .oss-card h3 a:hover { text-decoration: underline; }
-    .oss-org { font-size: 0.875rem; color: var(--muted); margin-bottom: 0.6rem; }
-    .oss-card p { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.7; }
-    .stars {
-      font-size: 0.82rem;
+    .oss-name { font-weight: 600; font-size: 0.95rem; }
+    .oss-name a { color: var(--accent); text-decoration: none; }
+    .oss-name a:hover { text-decoration: underline; }
+    .oss-badge {
+      font-size: 0.78rem;
+      font-weight: 600;
       color: #92400e;
       background: #fef3c7;
-      border-radius: 5px;
-      padding: 0.2rem 0.5rem;
-      white-space: nowrap;
-      font-weight: 600;
+      border-radius: 4px;
+      padding: 0.1rem 0.45rem;
     }
+    .oss-org { font-size: 0.83rem; color: var(--muted); margin-bottom: 0.35rem; }
+    .oss-desc { font-size: 0.9rem; color: var(--sub); line-height: 1.7; }
 
-    /* ── FOOTER ── */
-    footer {
-      background: var(--card);
-      border-top: 1px solid var(--border);
-      text-align: center;
-      padding: 1.75rem;
-      font-size: 0.875rem;
+    /* ══════════════════════════════
+       FOOTER
+    ══════════════════════════════ */
+    .footer {
+      padding: 0 3.5rem 3rem;
+      font-size: 0.8rem;
       color: var(--muted);
-      margin-top: 2rem;
+      max-width: 680px;
     }
 
-    /* ── RESPONSIVE ── */
-    @media (max-width: 660px) {
-      .about-layout { flex-direction: column; align-items: center; text-align: center; }
-      .about-photo-col { width: auto; }
-      .about-contact-list { align-items: center; }
-      .interest-list { justify-content: center; }
-      nav { padding: 0 1.25rem; }
-      .nav-tab { padding: 0 0.75rem; font-size: 0.85rem; }
-      .oss-grid { grid-template-columns: 1fr; }
-      .skill-row { flex-direction: column; gap: 0.4rem; }
-      .skill-label { width: auto; padding-top: 0; }
-      .page { padding: 80px 1.5rem 4rem; }
+    /* ══════════════════════════════
+       MOBILE
+    ══════════════════════════════ */
+    @media (max-width: 720px) {
+      .sidebar {
+        position: static;
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+        padding: 1.5rem 1.5rem 1rem;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 1rem;
+      }
+      .sidebar-photo { width: 72px; height: 72px; font-size: 1.4rem; margin-bottom: 0; }
+      .sidebar-name { font-size: 1rem; }
+      .sidebar-affil, .sidebar-role { display: none; }
+      .sidebar-links { flex-direction: row; flex-wrap: wrap; margin-bottom: 0; gap: 0.5rem 1rem; }
+      .sidebar-divider { display: none; }
+      .sidebar-nav { flex-direction: row; flex-wrap: wrap; gap: 0.25rem; }
+      .nav-item { padding: 0.3rem 0.65rem; }
+      .main { margin-left: 0; }
+      .page { padding: 2rem 1.5rem 4rem; }
+      .footer { padding: 0 1.5rem 2rem; }
     }
   </style>
 </head>
 <body>
 
-<!-- ── NAV ── -->
-<nav>
-  <span class="nav-name" onclick="showTab('about')">Jakang Lee</span>
-  <div class="nav-links">
-    <button class="nav-tab" data-tab="about"  onclick="showTab('about')">About</button>
-    <button class="nav-tab" data-tab="pubs"   onclick="showTab('pubs')">Publications</button>
-    <button class="nav-tab" data-tab="exp"    onclick="showTab('exp')">Experience</button>
-    <button class="nav-tab" data-tab="oss"    onclick="showTab('oss')">Open Source</button>
+<!-- ══════════════════════════════
+     SIDEBAR
+══════════════════════════════ -->
+<aside class="sidebar">
+  <div class="sidebar-photo" id="sidebar-photo">JL</div>
+  <div class="sidebar-name">Jakang Lee</div>
+  <div class="sidebar-role">Ph.D. Student, ECE</div>
+  <div class="sidebar-affil">UC San Diego · ABKGroup<br>Advisor: Prof. Andrew B. Kahng</div>
+
+  <div class="sidebar-links">
+    <a href="mailto:jal216@ucsd.edu">
+      <svg viewBox="0 0 20 20" fill="currentColor"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/></svg>
+      jal216@ucsd.edu
+    </a>
+    <a href="https://scholar.google.com/citations?user=alfj-iQAAAAJ&hl=en" target="_blank">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 24a7 7 0 1 1 0-14 7 7 0 0 1 0 14zm0-24L0 9.5l4.838 3.94A8 8 0 0 1 12 10a8 8 0 0 1 7.162 3.44L24 9.5z"/></svg>
+      Google Scholar
+    </a>
+    <a href="https://github.com/LeeJaKang" target="_blank">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+      GitHub
+    </a>
+    <a href="https://linkedin.com/in/jakanglee" target="_blank">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      LinkedIn
+    </a>
+    <a href="tel:+18582886436">
+      <svg viewBox="0 0 20 20" fill="currentColor"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/></svg>
+      +1 858-288-6436
+    </a>
   </div>
-</nav>
 
-<!-- ══════════════════════════════════════════
-     ABOUT
-══════════════════════════════════════════ -->
-<div class="page" id="page-about">
-  <div class="about-layout">
-    <div class="about-photo-col">
-      <div class="about-photo" id="profile-photo">JL</div>
-      <div class="about-contact-list">
-        <a href="mailto:jal216@ucsd.edu">
-          <span class="about-contact-icon">✉</span> jal216@ucsd.edu
-        </a>
-        <a href="https://linkedin.com/in/jakanglee" target="_blank">
-          <span class="about-contact-icon">in</span> LinkedIn
-        </a>
-        <a href="https://scholar.google.com/citations?user=alfj-iQAAAAJ&hl=en" target="_blank">
-          <span class="about-contact-icon">🎓</span> Google Scholar
-        </a>
-        <a href="https://github.com/LeeJaKang" target="_blank">
-          <span class="about-contact-icon">⌨</span> GitHub
-        </a>
-        <a href="tel:+18582886436">
-          <span class="about-contact-icon">☎</span> +1 858-288-6436
-        </a>
-      </div>
+  <div class="sidebar-divider"></div>
+
+  <nav class="sidebar-nav">
+    <button class="nav-item" data-tab="about"  onclick="showTab('about')">About</button>
+    <button class="nav-item" data-tab="pubs"   onclick="showTab('pubs')">Publications</button>
+    <button class="nav-item" data-tab="exp"    onclick="showTab('exp')">Experience</button>
+    <button class="nav-item" data-tab="oss"    onclick="showTab('oss')">Open Source</button>
+  </nav>
+</aside>
+
+<!-- ══════════════════════════════
+     MAIN
+══════════════════════════════ -->
+<div class="main">
+
+  <!-- ABOUT -->
+  <div class="page" id="page-about">
+    <div class="page-title">About</div>
+
+    <p class="about-bio">I work at the intersection of EDA automation and machine learning, focusing on automatic standard cell layout generation and design technology co-optimization (DTCO). My goal is to push the boundaries of next-generation semiconductor design through intelligent automation.</p>
+
+    <div class="section-heading">Research Interests</div>
+    <div class="interest-list">
+      <span class="interest-tag">Standard Cell Layout Generation</span>
+      <span class="interest-tag">Design Technology Co-Optimization</span>
+      <span class="interest-tag">ML-Driven EDA</span>
+      <span class="interest-tag">Parasitic Extraction</span>
+      <span class="interest-tag">Physical Design Automation</span>
     </div>
-    <div class="about-text-col">
-      <h1>Jakang Lee</h1>
-      <div class="about-role">Ph.D. Student in Electrical &amp; Computer Engineering</div>
-      <div class="about-affil">UC San Diego &nbsp;·&nbsp; ABKGroup &nbsp;·&nbsp; Advisor: Prof. Andrew B. Kahng</div>
-      <p class="about-bio">I work at the intersection of EDA automation and machine learning, focusing on automatic standard cell layout generation and design technology co-optimization (DTCO). My goal is to push the boundaries of next-generation semiconductor design through intelligent automation.</p>
 
-      <div class="about-section-title">Research Interests</div>
-      <div class="interest-list">
-        <span class="interest-tag">Standard Cell Layout Generation</span>
-        <span class="interest-tag">Design Technology Co-Optimization</span>
-        <span class="interest-tag">ML-Driven EDA</span>
-        <span class="interest-tag">Parasitic Extraction</span>
-        <span class="interest-tag">Physical Design Automation</span>
-      </div>
-
-      <div class="about-section-title">Education</div>
-      <div class="edu-list">
-        <div class="edu-item">
-          <div class="edu-header">
-            <span class="edu-school">University of California, San Diego</span>
-            <span class="edu-period">Sep 2025 – present</span>
-          </div>
-          <div class="edu-degree">Ph.D. in Electrical &amp; Computer Engineering</div>
-          <div class="edu-loc">San Diego, California &nbsp;·&nbsp; Advisor: Prof. Andrew B. Kahng</div>
-          <div class="edu-honors">
-            <span class="edu-honor-tag">🏅 Centaur Graduate Fellowship</span>
-            <span class="edu-honor-tag">🏅 Jacobs Fellowship</span>
-          </div>
+    <div class="section-heading">Education</div>
+    <div>
+      <div class="edu-item">
+        <div class="edu-row">
+          <span class="edu-school">University of California, San Diego</span>
+          <span class="edu-period">Sep 2025 – present</span>
         </div>
-        <div class="edu-item">
-          <div class="edu-header">
-            <span class="edu-school">Pohang University of Science and Technology (POSTECH)</span>
-            <span class="edu-period">Feb 2023 – Jun 2025</span>
-          </div>
-          <div class="edu-degree">Ph.D. Student in Electrical Engineering (Transferred to UCSD)</div>
-          <div class="edu-loc">Pohang, Korea &nbsp;·&nbsp; Advisor: Prof. Seokhyeong Kang</div>
-        </div>
-        <div class="edu-item">
-          <div class="edu-header">
-            <span class="edu-school">Pohang University of Science and Technology (POSTECH)</span>
-            <span class="edu-period">Feb 2021 – Feb 2023</span>
-          </div>
-          <div class="edu-degree">M.S. in Electrical Engineering</div>
-          <div class="edu-loc">Pohang, Korea &nbsp;·&nbsp; Advisor: Prof. Seokhyeong Kang</div>
-        </div>
-        <div class="edu-item">
-          <div class="edu-header">
-            <span class="edu-school">Kyungpook National University</span>
-            <span class="edu-period">Mar 2019 – Feb 2021</span>
-          </div>
-          <div class="edu-degree">B.S. in Electronics Engineering</div>
-          <div class="edu-loc">Daegu, Korea</div>
-          <div class="edu-honors">
-            <span class="edu-honor-tag">🏆 Top 5% of Class</span>
-            <span class="edu-honor-tag">📈 Top 5% every semester (GPA 3.94–4.3)</span>
-          </div>
-        </div>
-        <div class="edu-item">
-          <div class="edu-header">
-            <span class="edu-school">Hanseo University</span>
-            <span class="edu-period">Mar 2014 – Feb 2019</span>
-          </div>
-          <div class="edu-degree">B.S. Student in Aviation Electronics Engineering (Transferred to KNU)</div>
-          <div class="edu-loc">Taean, Korea</div>
-          <div class="edu-honors">
-            <span class="edu-honor-tag">🥇 Admitted as Valedictorian</span>
-            <span class="edu-honor-tag">🥇 Ranked 1st in class (3 semesters)</span>
-          </div>
+        <div class="edu-degree">Ph.D. in Electrical &amp; Computer Engineering</div>
+        <div class="edu-loc">San Diego, CA &nbsp;·&nbsp; Advisor: Prof. Andrew B. Kahng</div>
+        <div class="edu-honors">
+          <span class="honor-tag">Centaur Graduate Fellowship</span>
+          <span class="honor-tag">Jacobs Fellowship</span>
         </div>
       </div>
-
-      <div class="about-section-title">Awards &amp; Honors</div>
-      <div class="award-list">
-        <div class="award-item">
-          <div class="award-year">2026</div>
-          <div>
-            <div class="award-title">Best Paper Award Nomination — ASP-DAC 2026</div>
-            <div class="award-body">For "Au-MEDAL: Adaptable Grid Router with Metal Edge Detection and Layer Integration," Tokyo, Japan</div>
-          </div>
+      <div class="edu-item">
+        <div class="edu-row">
+          <span class="edu-school">Pohang University of Science and Technology (POSTECH)</span>
+          <span class="edu-period">Feb 2023 – Jun 2025</span>
         </div>
-        <div class="award-item">
-          <div class="award-year">2023</div>
-          <div>
-            <div class="award-title">Best Poster Award — ISOCC 2023</div>
-            <div class="award-body">For "Advanced Parasitic Capacitance Extraction using Active Learning," Jeju, Korea</div>
-          </div>
+        <div class="edu-degree">Ph.D. Student in Electrical Engineering (Transferred to UCSD)</div>
+        <div class="edu-loc">Pohang, Korea &nbsp;·&nbsp; Advisor: Prof. Seokhyeong Kang</div>
+      </div>
+      <div class="edu-item">
+        <div class="edu-row">
+          <span class="edu-school">Pohang University of Science and Technology (POSTECH)</span>
+          <span class="edu-period">Feb 2021 – Feb 2023</span>
+        </div>
+        <div class="edu-degree">M.S. in Electrical Engineering</div>
+        <div class="edu-loc">Pohang, Korea &nbsp;·&nbsp; Advisor: Prof. Seokhyeong Kang</div>
+      </div>
+      <div class="edu-item">
+        <div class="edu-row">
+          <span class="edu-school">Kyungpook National University</span>
+          <span class="edu-period">Mar 2019 – Feb 2021</span>
+        </div>
+        <div class="edu-degree">B.S. in Electronics Engineering</div>
+        <div class="edu-loc">Daegu, Korea</div>
+        <div class="edu-honors">
+          <span class="honor-tag">Top 5% of Class</span>
+          <span class="honor-tag">Top 5% every semester (GPA 3.94–4.3)</span>
         </div>
       </div>
-
-      <div class="about-section-title">Skills</div>
-      <div class="skills-grid">
-        <div class="skill-row">
-          <span class="skill-label">Programming</span>
-          <div class="skill-tags">
-            <span class="skill-tag">C</span><span class="skill-tag">C++</span><span class="skill-tag">Python</span>
-            <span class="skill-tag">Verilog</span><span class="skill-tag">Tcl</span><span class="skill-tag">Bash</span>
-          </div>
+      <div class="edu-item">
+        <div class="edu-row">
+          <span class="edu-school">Hanseo University</span>
+          <span class="edu-period">Mar 2014 – Feb 2019</span>
         </div>
-        <div class="skill-row">
-          <span class="skill-label">Synopsys</span>
-          <div class="skill-tags">
-            <span class="skill-tag">IC Compiler II</span><span class="skill-tag">Design Compiler</span>
-            <span class="skill-tag">PrimeTime</span><span class="skill-tag">SiliconSmart</span>
-            <span class="skill-tag">StarRC</span><span class="skill-tag">DSO.ai</span>
-          </div>
-        </div>
-        <div class="skill-row">
-          <span class="skill-label">Cadence</span>
-          <div class="skill-tags">
-            <span class="skill-tag">Innovus</span><span class="skill-tag">Virtuoso</span>
-          </div>
-        </div>
-        <div class="skill-row">
-          <span class="skill-label">Open-source EDA</span>
-          <div class="skill-tags">
-            <span class="skill-tag">OpenROAD</span><span class="skill-tag">OpenDB</span>
-          </div>
-        </div>
-        <div class="skill-row">
-          <span class="skill-label">Calibre</span>
-          <div class="skill-tags">
-            <span class="skill-tag">LVS</span><span class="skill-tag">DRC</span><span class="skill-tag">PEX</span>
-          </div>
-        </div>
-        <div class="skill-row">
-          <span class="skill-label">Other</span>
-          <div class="skill-tags">
-            <span class="skill-tag">Xilinx Vivado/Vitis</span>
-            <span class="skill-tag">Linux Server</span><span class="skill-tag">Docker</span>
-          </div>
+        <div class="edu-degree">B.S. Student in Aviation Electronics Engineering (Transferred to KNU)</div>
+        <div class="edu-loc">Taean, Korea</div>
+        <div class="edu-honors">
+          <span class="honor-tag">Admitted as Valedictorian</span>
+          <span class="honor-tag">Ranked 1st in class (3 semesters)</span>
         </div>
       </div>
     </div>
+
+    <div class="section-heading">Awards &amp; Honors</div>
+    <div>
+      <div class="award-item">
+        <div class="award-year">2026</div>
+        <div>
+          <div class="award-title">Best Paper Award Nomination — ASP-DAC 2026</div>
+          <div class="award-body">"Au-MEDAL: Adaptable Grid Router with Metal Edge Detection and Layer Integration," Tokyo, Japan</div>
+        </div>
+      </div>
+      <div class="award-item">
+        <div class="award-year">2023</div>
+        <div>
+          <div class="award-title">Best Poster Award — ISOCC 2023</div>
+          <div class="award-body">"Advanced Parasitic Capacitance Extraction using Active Learning," Jeju, Korea</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-heading">Skills</div>
+    <div class="skills-table">
+      <div class="skill-row"><span class="skill-cat">Programming</span><span class="skill-val">C, C++, Python, Verilog, Tcl, Bash</span></div>
+      <div class="skill-row"><span class="skill-cat">Synopsys</span><span class="skill-val">IC Compiler II, Design Compiler, PrimeTime, SiliconSmart, StarRC, DSO.ai</span></div>
+      <div class="skill-row"><span class="skill-cat">Cadence</span><span class="skill-val">Innovus, Virtuoso</span></div>
+      <div class="skill-row"><span class="skill-cat">Open-source EDA</span><span class="skill-val">OpenROAD, OpenDB</span></div>
+      <div class="skill-row"><span class="skill-cat">Calibre</span><span class="skill-val">LVS, DRC, PEX</span></div>
+      <div class="skill-row"><span class="skill-cat">Other</span><span class="skill-val">Xilinx Vivado/Vitis, Linux Server, Docker</span></div>
+    </div>
   </div>
+
+  <!-- PUBLICATIONS -->
+  <div class="page" id="page-pubs">
+    <div class="page-title">Publications</div>
+
+    <div class="pub-filter">
+      <button class="active" onclick="filterPubs('all',this)">All</button>
+      <button onclick="filterPubs('dtco',this)">Standard Cell / DTCO</button>
+      <button onclick="filterPubs('parasitic',this)">Parasitic Extraction</button>
+      <button onclick="filterPubs('ml',this)">AI-Driven EDA</button>
+    </div>
+
+    <div class="pub-item" data-cat="dtco">
+      <div class="pub-num">1</div>
+      <div class="pub-body">
+        <div class="pub-title">Au-MEDAL: Adaptable Grid Router with Metal Edge Detection and Layer Integration<span class="pub-award-badge">Best Paper Nominee</span></div>
+        <div class="pub-authors">A. B. Kahng, S. Kang, S. Kim, <strong>J. Lee</strong>, D. Yoon</div>
+        <div class="pub-venue">ASP-DAC 2026</div>
+      </div>
+    </div>
+    <div class="pub-item" data-cat="parasitic">
+      <div class="pub-num">2</div>
+      <div class="pub-body">
+        <div class="pub-title">Differentiable Fill Insertion with Explicit Delay Optimization</div>
+        <div class="pub-authors">J. Cho, J. Ahn, <strong>J. Lee</strong>, J. Lee, S. Park, S. Kang</div>
+        <div class="pub-venue">DAC 2026 (to appear)</div>
+      </div>
+    </div>
+    <div class="pub-item" data-cat="ml">
+      <div class="pub-num">3</div>
+      <div class="pub-body">
+        <div class="pub-title">A Heterogeneous Graph-based Gate Sizer Integrating Graph Attention Network and Transformer</div>
+        <div class="pub-authors">J. Ahn, J. Cho, J. Seo, J. Lee, <strong>J. Lee</strong>, S. Kang</div>
+        <div class="pub-venue">ASP-DAC 2026</div>
+      </div>
+    </div>
+    <div class="pub-item" data-cat="ml">
+      <div class="pub-num">4</div>
+      <div class="pub-body">
+        <div class="pub-title">Automated QoR improvement in OpenROAD with coding agents</div>
+        <div class="pub-authors">A. Ghose, J. Jang, A. B. Kahng, <strong>J. Lee</strong></div>
+        <div class="pub-venue">arXiv:2601.06268</div>
+      </div>
+    </div>
+    <div class="pub-item" data-cat="dtco">
+      <div class="pub-num">5</div>
+      <div class="pub-body">
+        <div class="pub-title">SO3-Cell: Standard Cell Layout Synthesis Framework for Simultaneous Optimization of Topology, Placement, and Routing</div>
+        <div class="pub-authors">C.-K. Cheng, A. B. Kahng, B. Kang, S. Kang, <strong>J. Lee</strong>, B. Lin</div>
+        <div class="pub-venue">ICCAD 2025</div>
+      </div>
+    </div>
+    <div class="pub-item" data-cat="dtco">
+      <div class="pub-num">6</div>
+      <div class="pub-body">
+        <div class="pub-title">LIBMixer: An all-MLP Architecture for Cell Library Characterization towards Design Space Optimization</div>
+        <div class="pub-authors">J. Lee, S. Jang, <strong>J. Lee</strong>, S. Kang</div>
+        <div class="pub-venue">ASP-DAC 2025</div>
+      </div>
+    </div>
+    <div class="pub-item" data-cat="parasitic">
+      <div class="pub-num">7</div>
+      <div class="pub-body">
+        <div class="pub-title">ParaFormer: A Hybrid Graph Neural Network and Transformer Approach for Pre-Routing Parasitic RC Prediction</div>
+        <div class="pub-authors">J. Yoon, <strong>J. Lee</strong>, D. Kim, J. Hur, S. Kang</div>
+        <div class="pub-venue">ASP-DAC 2025</div>
+      </div>
+    </div>
+    <div class="pub-item" data-cat="parasitic">
+      <div class="pub-num">8</div>
+      <div class="pub-body">
+        <div class="pub-title">RL-Fill: Timing-Aware Fill Insertion Using Reinforcement Learning</div>
+        <div class="pub-authors">J. Cho, S. Park, <strong>J. Lee</strong>, S.-Y. Lee, J. Ahn, S. Kang</div>
+        <div class="pub-venue">ICCAD 2024</div>
+      </div>
+    </div>
+    <div class="pub-item" data-cat="ml">
+      <div class="pub-num">9</div>
+      <div class="pub-body">
+        <div class="pub-title">TA3D: Timing-Aware 3D IC Partitioning and Placement by Optimizing the Critical Path</div>
+        <div class="pub-authors">D. Kim, M. Kim, J. Hur, <strong>J. Lee</strong>, J. Cho, S. Kang</div>
+        <div class="pub-venue">MLCAD 2024</div>
+      </div>
+    </div>
+    <div class="pub-item" data-cat="dtco">
+      <div class="pub-num">10</div>
+      <div class="pub-body">
+        <div class="pub-title">Multi-Source Transfer Learning for Design Technology Co-Optimization</div>
+        <div class="pub-authors"><strong>J. Lee</strong>, J. Lee, S. Park, S. Kang</div>
+        <div class="pub-venue">ISLPED 2023</div>
+      </div>
+    </div>
+    <div class="pub-item" data-cat="parasitic">
+      <div class="pub-num">11</div>
+      <div class="pub-body">
+        <div class="pub-title">Advanced Parasitic Capacitance Extraction using Active Learning<span class="pub-award-badge">Best Poster Award</span></div>
+        <div class="pub-authors">D. Kim, <strong>J. Lee</strong>, S. Kang</div>
+        <div class="pub-venue">ISOCC 2023</div>
+      </div>
+    </div>
+    <div class="pub-item" data-cat="ml">
+      <div class="pub-num">12</div>
+      <div class="pub-body">
+        <div class="pub-title">Routability Prediction using Deep Hierarchical Classification and Regression</div>
+        <div class="pub-authors">D. Kim, <strong>J. Lee</strong>, S. Kang</div>
+        <div class="pub-venue">DATE 2023</div>
+      </div>
+    </div>
+
+    <div class="section-heading" style="margin-top:2.5rem">Patents</div>
+    <div>
+      <div class="patent-item">
+        <span class="patent-id">KR20250136086A</span>
+        S. Kang, D. Kim, and <strong>J. Lee</strong>, "Apparatus and method for routability prediction using hierarchical classification and regression model, transfer learning method," Republic of Korea. <span class="patent-status">(Pending)</span>
+      </div>
+      <div class="patent-item">
+        <span class="patent-id">KR20250165871A</span>
+        S. Kang, <strong>J. Lee</strong>, J. Lee, and S. Park, "Integrated circuit design system performing DTCO," Republic of Korea. <span class="patent-status">(Pending)</span>
+      </div>
+      <div class="patent-item">
+        <span class="patent-id">US20250356087A1</span>
+        S. Kang, <strong>J. Lee</strong>, J. Lee, and S. Park, "Integrated circuit design system for performing DTCO (design technology co-optimization)," United States. <span class="patent-status">(Pending)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- EXPERIENCE -->
+  <div class="page" id="page-exp">
+    <div class="page-title">Experience</div>
+
+    <div class="section-heading">Work Experience</div>
+    <div>
+      <div class="exp-item">
+        <div class="exp-row">
+          <span class="exp-org">University of California, San Diego</span>
+          <span class="exp-period">Feb 2024 – Mar 2025</span>
+        </div>
+        <div class="exp-role">Visiting Ph.D. Student · ABKGroup · Advisor: Prof. Andrew B. Kahng</div>
+        <div class="exp-loc">San Diego, California</div>
+        <ul class="exp-desc">
+          <li>Implemented standard cell layout generation using SMT (Satisfiability Modulo Theories)</li>
+          <li>Developed design rule checking at the nanometer scale</li>
+          <li>Implemented DRC for interactions between different metal layers</li>
+        </ul>
+      </div>
+      <div class="exp-item">
+        <div class="exp-row">
+          <span class="exp-org">Samsung Electronics Co., Ltd.</span>
+          <span class="exp-period">Jul 2023 – Sep 2023</span>
+        </div>
+        <div class="exp-role">Project Intern · Design Technology Team, Memory Division</div>
+        <div class="exp-loc">Hwaseong, Korea</div>
+        <ul class="exp-desc">
+          <li>Implemented Bayesian optimization with Tree Parzen Estimator as a surrogate model in Python</li>
+          <li>Wrapped the program in Tcl to ensure compatibility with Synopsys DSO.ai run scripts</li>
+        </ul>
+      </div>
+      <div class="exp-item">
+        <div class="exp-row">
+          <span class="exp-org">Republic of Korea Air Force</span>
+          <span class="exp-period">Feb 2014 – Feb 2017</span>
+        </div>
+        <div class="exp-role">Aviation Electronic Engineer · Mandatory Military Service</div>
+        <div class="exp-loc">Chungju, Korea</div>
+        <ul class="exp-desc">
+          <li>Aircraft Instrument Maintenance Department</li>
+          <li>Aviation electronic engineering and maintenance</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section-heading">Teaching Assistant</div>
+    <div>
+      <div class="exp-item">
+        <div class="exp-row">
+          <span class="exp-org">POSTECH — [DISU399] Undergraduate Research Intern</span>
+          <span class="exp-period">Sep 2022 – Jul 2023</span>
+        </div>
+        <div class="exp-loc">Pohang, Korea</div>
+        <ul class="exp-desc">
+          <li>Mentored undergraduate research interns on MLCAD and routing congestion prediction</li>
+        </ul>
+      </div>
+      <div class="exp-item">
+        <div class="exp-row">
+          <span class="exp-org">K-MOOC — System Semiconductor Design</span>
+          <span class="exp-period">Mar 2022 – Jun 2022</span>
+        </div>
+        <div class="exp-loc">Pohang, Korea</div>
+        <ul class="exp-desc">
+          <li>VLSI design, HDL coding, logic synthesis, and physical design</li>
+        </ul>
+      </div>
+      <div class="exp-item">
+        <div class="exp-row">
+          <span class="exp-org">POSTECH — [EECE274] Digital System Design</span>
+          <span class="exp-period">Sep 2021 – Dec 2021</span>
+        </div>
+        <div class="exp-loc">Pohang, Korea</div>
+      </div>
+    </div>
+
+    <div class="section-heading">Projects</div>
+    <div>
+      <div class="exp-item">
+        <div class="exp-row">
+          <span class="exp-org">Development of Giga-sampling-based Data Acquisition Techniques (2nd year)</span>
+          <span class="exp-period">Jan 2023 – Jun 2023</span>
+        </div>
+        <div class="exp-loc">SK Hynix, POSTECH, et al. · Pohang, Korea</div>
+        <ul class="exp-desc">
+          <li>FPGA programming, system-based RISC-V integration and debugging</li>
+        </ul>
+      </div>
+      <div class="exp-item">
+        <div class="exp-row">
+          <span class="exp-org">Research on Semiconductor Design Automation based on Deep Learning</span>
+          <span class="exp-period">Mar 2022 – Jun 2022</span>
+        </div>
+        <div class="exp-loc">POSCO, POSTECH, et al. · Pohang, Korea</div>
+        <ul class="exp-desc">
+          <li>Machine learning, routability prediction, feature extraction, OpenROAD, OpenDB</li>
+        </ul>
+      </div>
+      <div class="exp-item">
+        <div class="exp-row">
+          <span class="exp-org">Development of Giga-sampling-based Data Acquisition Techniques (1st year)</span>
+          <span class="exp-period">Apr 2021 – Feb 2022</span>
+        </div>
+        <div class="exp-loc">SK Hynix, POSTECH, et al. · Pohang, Korea</div>
+        <ul class="exp-desc">
+          <li>FPGA programming, RISC-V integration and debugging, PS-PL communication</li>
+        </ul>
+      </div>
+      <div class="exp-item">
+        <div class="exp-row">
+          <span class="exp-org">Autonomous Quad-copter Design and Development</span>
+          <span class="exp-period">Jan 2018 – Dec 2018</span>
+        </div>
+        <div class="exp-loc">Nerki Club, Dept. of Avionics Engineering, Hanseo University · Taean, Korea</div>
+        <ul class="exp-desc">
+          <li>Sensor fusion (accelerometer and gyroscope), GPS coordinate parsing</li>
+          <li>GUI creation for map and coordinates using LabVIEW, PPM signal processing</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- OPEN SOURCE -->
+  <div class="page" id="page-oss">
+    <div class="page-title">Open-Source Contributions</div>
+    <div>
+      <div class="oss-item">
+        <div class="oss-row">
+          <span class="oss-name"><a href="https://github.com/ABKGroup/NanGate45-Synopsys-Enablement" target="_blank">NanGate45-Synopsys-Enablement</a></span>
+          <span class="oss-badge">★ 30+</span>
+        </div>
+        <div class="oss-org">ABKGroup · UC San Diego · 2025</div>
+        <div class="oss-desc">Synopsys EDA tool enablement for the NanGate45 open-source PDK, enabling post-route parasitic extraction and timing-driven place-and-route — capabilities previously unavailable to the research community.</div>
+      </div>
+      <div class="oss-item">
+        <div class="oss-row">
+          <span class="oss-name"><a href="https://github.com/ABKGroup/ASAP7-Synopsys-Enablement" target="_blank">ASAP7-Synopsys-Enablement</a></span>
+        </div>
+        <div class="oss-org">ABKGroup · UC San Diego · 2025–present</div>
+        <div class="oss-desc">First-ever Synopsys-based post-route extraction and timing analysis for the ASAP7 7nm open-source PDK, including calibrated TLU+ and NXTGRD files.</div>
+      </div>
+      <div class="oss-item">
+        <div class="oss-row">
+          <span class="oss-name"><a href="https://github.com/ABKGroup/Au-MEDAL" target="_blank">Au-MEDAL</a></span>
+          <span class="oss-badge">ASP-DAC 2026</span>
+        </div>
+        <div class="oss-org">ABKGroup · UC San Diego · 2025–present</div>
+        <div class="oss-desc">Open-source SMT-based standard cell router published at ASP-DAC 2026, nominated for Best Paper Award.</div>
+      </div>
+      <div class="oss-item">
+        <div class="oss-row">
+          <span class="oss-name"><a href="https://github.com/ckchengucsd/SO3-Cell" target="_blank">SO3-Cell</a></span>
+          <span class="oss-badge">ICCAD 2025</span>
+        </div>
+        <div class="oss-org">UC San Diego · 2025</div>
+        <div class="oss-desc">Open-source framework for simultaneous optimization of standard cell layout topology, placement, and routing, published at ICCAD 2025.</div>
+      </div>
+      <div class="oss-item">
+        <div class="oss-row">
+          <span class="oss-name"><a href="https://github.com/The-OpenROAD-Project/OpenROAD-flow-scripts" target="_blank">OpenROAD ASAP7 Library Fixes</a></span>
+        </div>
+        <div class="oss-org">The OpenROAD Project (DARPA-funded) · 2025–2026</div>
+        <div class="oss-desc">Identified and corrected corner characterization errors in ASAP7 Liberty files; fully re-extracted MBFF timing libraries and contributed to OpenROAD-flow-scripts.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">Jakang Lee · jal216@ucsd.edu · UC San Diego ECE</div>
 </div>
-
-<!-- ══════════════════════════════════════════
-     PUBLICATIONS
-══════════════════════════════════════════ -->
-<div class="page" id="page-pubs">
-  <div class="section-title">Publications</div>
-  <div class="pub-filter">
-    <button class="active" onclick="filterPubs('all', this)">All</button>
-    <button onclick="filterPubs('dtco', this)">Standard Cell / DTCO</button>
-    <button onclick="filterPubs('parasitic', this)">Parasitic Extraction</button>
-    <button onclick="filterPubs('ml', this)">AI-Driven EDA</button>
-  </div>
-
-  <div class="pub-item" data-cat="dtco">
-    <div class="pub-year-badge">2026</div>
-    <div class="pub-content">
-      <div class="pub-title">Au-MEDAL: Adaptable Grid Router with Metal Edge Detection and Layer Integration <span class="pub-award-badge">Best Paper Nominee</span></div>
-      <div class="pub-authors">Andrew B. Kahng, Seokhyeong Kang, Sehyeon Kim, <strong>Jakang Lee</strong>, Dooseok Yoon</div>
-      <div class="pub-venue">ASP-DAC 2026</div>
-    </div>
-  </div>
-  <div class="pub-item" data-cat="parasitic">
-    <div class="pub-year-badge">2026</div>
-    <div class="pub-content">
-      <div class="pub-title">Differentiable Fill Insertion with Explicit Delay Optimization</div>
-      <div class="pub-authors">Jinoh Cho, Jinmo Ahn, <strong>Jakang Lee</strong>, Jaeseung Lee, Seonghyeon Park, Seokhyeong Kang</div>
-      <div class="pub-venue">DAC 2026 (to appear)</div>
-    </div>
-  </div>
-  <div class="pub-item" data-cat="ml">
-    <div class="pub-year-badge">2026</div>
-    <div class="pub-content">
-      <div class="pub-title">A Heterogeneous Graph-based Gate Sizer Integrating Graph Attention Network and Transformer</div>
-      <div class="pub-authors">Jinmo Ahn, Jinoh Cho, Jaemin Seo, Jaeseung Lee, <strong>Jakang Lee</strong>, Seokhyeong Kang</div>
-      <div class="pub-venue">ASP-DAC 2026</div>
-    </div>
-  </div>
-  <div class="pub-item" data-cat="ml">
-    <div class="pub-year-badge">2026</div>
-    <div class="pub-content">
-      <div class="pub-title">Automated QoR improvement in OpenROAD with coding agents</div>
-      <div class="pub-authors">Amur Ghose, Junyeong Jang, Andrew B. Kahng, <strong>Jakang Lee</strong></div>
-      <div class="pub-venue">arXiv:2601.06268</div>
-    </div>
-  </div>
-  <div class="pub-item" data-cat="dtco">
-    <div class="pub-year-badge">2025</div>
-    <div class="pub-content">
-      <div class="pub-title">SO3-Cell: Standard Cell Layout Synthesis Framework for Simultaneous Optimization of Topology, Placement, and Routing</div>
-      <div class="pub-authors">Chung-Kuan Cheng, Andrew B. Kahng, Byeonggon Kang, Seokhyeong Kang, <strong>Jakang Lee</strong>, Bill Lin</div>
-      <div class="pub-venue">ICCAD 2025</div>
-    </div>
-  </div>
-  <div class="pub-item" data-cat="dtco">
-    <div class="pub-year-badge">2025</div>
-    <div class="pub-content">
-      <div class="pub-title">LIBMixer: An all-MLP Architecture for Cell Library Characterization towards Design Space Optimization</div>
-      <div class="pub-authors">Jaeseung Lee, Sunggyu Jang, <strong>Jakang Lee</strong>, Seokhyeong Kang</div>
-      <div class="pub-venue">ASP-DAC 2025</div>
-    </div>
-  </div>
-  <div class="pub-item" data-cat="parasitic">
-    <div class="pub-year-badge">2025</div>
-    <div class="pub-content">
-      <div class="pub-title">ParaFormer: A Hybrid Graph Neural Network and Transformer Approach for Pre-Routing Parasitic RC Prediction</div>
-      <div class="pub-authors">Jongho Yoon, <strong>Jakang Lee</strong>, Donggyu Kim, Junseok Hur, Seokhyeong Kang</div>
-      <div class="pub-venue">ASP-DAC 2025</div>
-    </div>
-  </div>
-  <div class="pub-item" data-cat="parasitic">
-    <div class="pub-year-badge">2024</div>
-    <div class="pub-content">
-      <div class="pub-title">RL-Fill: Timing-Aware Fill Insertion Using Reinforcement Learning</div>
-      <div class="pub-authors">Jinoh Cho, Seonghyeon Park, <strong>Jakang Lee</strong>, Sung-Yun Lee, Jinmo Ahn, Seokhyeong Kang</div>
-      <div class="pub-venue">ICCAD 2024</div>
-    </div>
-  </div>
-  <div class="pub-item" data-cat="ml">
-    <div class="pub-year-badge">2024</div>
-    <div class="pub-content">
-      <div class="pub-title">TA3D: Timing-Aware 3D IC Partitioning and Placement by Optimizing the Critical Path</div>
-      <div class="pub-authors">Donggyu Kim, Minjae Kim, Junseok Hur, <strong>Jakang Lee</strong>, Jinoh Cho, Seokhyeong Kang</div>
-      <div class="pub-venue">MLCAD 2024</div>
-    </div>
-  </div>
-  <div class="pub-item" data-cat="dtco">
-    <div class="pub-year-badge">2023</div>
-    <div class="pub-content">
-      <div class="pub-title">Multi-Source Transfer Learning for Design Technology Co-Optimization</div>
-      <div class="pub-authors"><strong>Jakang Lee</strong>, Jaeseung Lee, Seonghyeon Park, Seokhyeong Kang</div>
-      <div class="pub-venue">ISLPED 2023</div>
-    </div>
-  </div>
-  <div class="pub-item" data-cat="parasitic">
-    <div class="pub-year-badge">2023</div>
-    <div class="pub-content">
-      <div class="pub-title">Advanced Parasitic Capacitance Extraction using Active Learning <span class="pub-award-badge">Best Poster Award</span></div>
-      <div class="pub-authors">Donggyu Kim, <strong>Jakang Lee</strong>, Seokhyeong Kang</div>
-      <div class="pub-venue">ISOCC 2023</div>
-    </div>
-  </div>
-  <div class="pub-item" data-cat="ml">
-    <div class="pub-year-badge">2023</div>
-    <div class="pub-content">
-      <div class="pub-title">Routability Prediction using Deep Hierarchical Classification and Regression</div>
-      <div class="pub-authors">Donggyu Kim, <strong>Jakang Lee</strong>, Seokhyeong Kang</div>
-      <div class="pub-venue">DATE 2023</div>
-    </div>
-  </div>
-
-  <div class="subsection-title">Patents</div>
-  <div class="patent-list">
-    <div class="patent-item">
-      <span class="patent-id">KR20250136086A</span>
-      S. Kang, D. Kim, and <strong>J. Lee</strong>, "Apparatus and method for routability prediction using hierarchical classification and regression model, transfer learning method," Republic of Korea.
-      <span class="patent-status">(Pending)</span>
-    </div>
-    <div class="patent-item">
-      <span class="patent-id">KR20250165871A</span>
-      S. Kang, <strong>J. Lee</strong>, J. Lee, and S. Park, "Integrated circuit design system performing DTCO," Republic of Korea.
-      <span class="patent-status">(Pending)</span>
-    </div>
-    <div class="patent-item">
-      <span class="patent-id">US20250356087A1</span>
-      S. Kang, <strong>J. Lee</strong>, J. Lee, and S. Park, "Integrated circuit design system for performing DTCO (design technology co-optimization)," United States.
-      <span class="patent-status">(Pending)</span>
-    </div>
-  </div>
-</div>
-
-<!-- ══════════════════════════════════════════
-     EXPERIENCE
-══════════════════════════════════════════ -->
-<div class="page" id="page-exp">
-  <div class="section-title">Experience</div>
-
-  <div class="subsection-title">Work Experience</div>
-  <div class="timeline">
-    <div class="tl-item">
-      <div class="tl-header">
-        <span class="tl-title">University of California, San Diego</span>
-        <span class="tl-period">Feb 2024 – Mar 2025</span>
-      </div>
-      <div class="tl-role">Visiting Ph.D. Student &nbsp;·&nbsp; ABKGroup &nbsp;·&nbsp; Advisor: Prof. Andrew B. Kahng</div>
-      <div class="tl-loc">San Diego, California</div>
-      <ul class="tl-desc">
-        <li>Implemented standard cell layout generation using SMT (Satisfiability Modulo Theories)</li>
-        <li>Developed design rule checking at the nanometer scale</li>
-        <li>Implemented DRC for interactions between different metal layers</li>
-      </ul>
-    </div>
-    <div class="tl-item">
-      <div class="tl-header">
-        <span class="tl-title">Samsung Electronics Co., Ltd.</span>
-        <span class="tl-period">Jul 2023 – Sep 2023</span>
-      </div>
-      <div class="tl-role">Project Intern &nbsp;·&nbsp; Design Technology Team, Memory Division</div>
-      <div class="tl-loc">Hwaseong, Korea</div>
-      <ul class="tl-desc">
-        <li>Implemented Bayesian optimization with Tree Parzen Estimator as a surrogate model in Python</li>
-        <li>Wrapped the program in Tcl to ensure compatibility with Synopsys DSO.ai run scripts</li>
-      </ul>
-    </div>
-    <div class="tl-item">
-      <div class="tl-header">
-        <span class="tl-title">Republic of Korea Air Force</span>
-        <span class="tl-period">Feb 2014 – Feb 2017</span>
-      </div>
-      <div class="tl-role">Aviation Electronic Engineer &nbsp;·&nbsp; Mandatory Military Service</div>
-      <div class="tl-loc">Chungju, Korea</div>
-      <ul class="tl-desc">
-        <li>Aircraft Instrument Maintenance Department</li>
-        <li>Aviation electronic engineering and maintenance</li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="subsection-title">Teaching Assistant</div>
-  <div class="timeline">
-    <div class="tl-item">
-      <div class="tl-header">
-        <span class="tl-title">POSTECH — [DISU399] Undergraduate Research Intern</span>
-        <span class="tl-period">Sep 2022 – Jul 2023</span>
-      </div>
-      <div class="tl-role">Teaching Assistant &nbsp;·&nbsp; Pohang, Korea</div>
-      <ul class="tl-desc">
-        <li>Mentored undergraduate research interns on MLCAD and routing congestion prediction</li>
-      </ul>
-    </div>
-    <div class="tl-item">
-      <div class="tl-header">
-        <span class="tl-title">K-MOOC — System Semiconductor Design</span>
-        <span class="tl-period">Mar 2022 – Jun 2022</span>
-      </div>
-      <div class="tl-role">Teaching Assistant &nbsp;·&nbsp; Pohang, Korea</div>
-      <ul class="tl-desc">
-        <li>VLSI design, HDL coding, logic synthesis, and physical design</li>
-      </ul>
-    </div>
-    <div class="tl-item">
-      <div class="tl-header">
-        <span class="tl-title">POSTECH — [EECE274] Digital System Design</span>
-        <span class="tl-period">Sep 2021 – Dec 2021</span>
-      </div>
-      <div class="tl-role">Teaching Assistant &nbsp;·&nbsp; Pohang, Korea</div>
-    </div>
-  </div>
-
-  <div class="subsection-title">Projects</div>
-  <div class="timeline">
-    <div class="tl-item">
-      <div class="tl-header">
-        <span class="tl-title">Development of Giga-sampling-based Data Acquisition Techniques (2nd year)</span>
-        <span class="tl-period">Jan 2023 – Jun 2023</span>
-      </div>
-      <div class="tl-role">SK Hynix, POSTECH, et al. &nbsp;·&nbsp; Pohang, Korea</div>
-      <ul class="tl-desc">
-        <li>FPGA programming, system-based RISC-V integration and debugging</li>
-      </ul>
-    </div>
-    <div class="tl-item">
-      <div class="tl-header">
-        <span class="tl-title">Research on Semiconductor Design Automation based on Deep Learning</span>
-        <span class="tl-period">Mar 2022 – Jun 2022</span>
-      </div>
-      <div class="tl-role">POSCO, POSTECH, et al. &nbsp;·&nbsp; Pohang, Korea</div>
-      <ul class="tl-desc">
-        <li>Machine learning, routability prediction, feature extraction, OpenROAD, OpenDB</li>
-      </ul>
-    </div>
-    <div class="tl-item">
-      <div class="tl-header">
-        <span class="tl-title">Development of Giga-sampling-based Data Acquisition Techniques (1st year)</span>
-        <span class="tl-period">Apr 2021 – Feb 2022</span>
-      </div>
-      <div class="tl-role">SK Hynix, POSTECH, et al. &nbsp;·&nbsp; Pohang, Korea</div>
-      <ul class="tl-desc">
-        <li>FPGA programming, RISC-V integration and debugging, PS-PL communication</li>
-      </ul>
-    </div>
-    <div class="tl-item">
-      <div class="tl-header">
-        <span class="tl-title">Autonomous Quad-copter Design and Development</span>
-        <span class="tl-period">Jan 2018 – Dec 2018</span>
-      </div>
-      <div class="tl-role">Nerki Club, Dept. of Avionics Engineering, Hanseo University &nbsp;·&nbsp; Taean, Korea</div>
-      <ul class="tl-desc">
-        <li>Sensor fusion (accelerometer and gyroscope), GPS coordinate parsing</li>
-        <li>GUI creation for map and coordinates using LabVIEW, PPM signal processing</li>
-      </ul>
-    </div>
-  </div>
-</div>
-
-<!-- ══════════════════════════════════════════
-     OPEN SOURCE
-══════════════════════════════════════════ -->
-<div class="page" id="page-oss">
-  <div class="section-title">Open-Source Contributions</div>
-  <div class="oss-grid">
-    <div class="oss-card">
-      <div class="oss-card-header">
-        <h3><a href="https://github.com/ABKGroup/NanGate45-Synopsys-Enablement" target="_blank">NanGate45-Synopsys-Enablement</a></h3>
-        <span class="stars">★ 30+</span>
-      </div>
-      <div class="oss-org">ABKGroup · UC San Diego · 2025</div>
-      <p>Synopsys EDA tool enablement for the NanGate45 open-source PDK, enabling post-route parasitic extraction and timing-driven place-and-route — capabilities previously unavailable to the research community.</p>
-    </div>
-    <div class="oss-card">
-      <div class="oss-card-header">
-        <h3><a href="https://github.com/ABKGroup/ASAP7-Synopsys-Enablement" target="_blank">ASAP7-Synopsys-Enablement</a></h3>
-      </div>
-      <div class="oss-org">ABKGroup · UC San Diego · 2025–present</div>
-      <p>First-ever Synopsys-based post-route extraction and timing analysis for the ASAP7 7nm open-source PDK, including calibrated TLU+ and NXTGRD files.</p>
-    </div>
-    <div class="oss-card">
-      <div class="oss-card-header">
-        <h3><a href="https://github.com/ABKGroup/Au-MEDAL" target="_blank">Au-MEDAL</a></h3>
-        <span class="stars">ASP-DAC 2026</span>
-      </div>
-      <div class="oss-org">ABKGroup · UC San Diego · 2025–present</div>
-      <p>Open-source SMT-based standard cell router published at ASP-DAC 2026, nominated for Best Paper Award.</p>
-    </div>
-    <div class="oss-card">
-      <div class="oss-card-header">
-        <h3><a href="https://github.com/ckchengucsd/SO3-Cell" target="_blank">SO3-Cell</a></h3>
-        <span class="stars">ICCAD 2025</span>
-      </div>
-      <div class="oss-org">UC San Diego · 2025</div>
-      <p>Open-source release of the SO3-Cell framework for simultaneous optimization of standard cell layout topology, placement, and routing, published at ICCAD 2025.</p>
-    </div>
-    <div class="oss-card">
-      <div class="oss-card-header">
-        <h3><a href="https://github.com/The-OpenROAD-Project/OpenROAD-flow-scripts" target="_blank">OpenROAD ASAP7 Library Fixes</a></h3>
-      </div>
-      <div class="oss-org">The OpenROAD Project (DARPA-funded) · 2025–2026</div>
-      <p>Identified and corrected corner characterization errors in ASAP7 Liberty files; fully re-extracted MBFF timing libraries and contributed to OpenROAD-flow-scripts.</p>
-    </div>
-  </div>
-</div>
-
-<footer>Jakang Lee &nbsp;·&nbsp; jal216@ucsd.edu &nbsp;·&nbsp; UC San Diego ECE</footer>
 
 <script>
   function showTab(tab) {
     document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-    document.querySelectorAll('.nav-tab').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.nav-item').forEach(b => b.classList.remove('active'));
     document.getElementById('page-' + tab).classList.add('active');
     const btn = document.querySelector('[data-tab="' + tab + '"]');
     if (btn) btn.classList.add('active');
     history.replaceState(null, '', '#' + tab);
+    document.querySelector('.main').scrollTo(0, 0);
     window.scrollTo(0, 0);
   }
 
   function filterPubs(cat, btn) {
     document.querySelectorAll('.pub-filter button').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
+    let idx = 1;
     document.querySelectorAll('.pub-item').forEach(item => {
-      if (cat === 'all' || item.dataset.cat === cat) {
-        item.classList.remove('hidden');
-      } else {
-        item.classList.add('hidden');
-      }
+      const show = cat === 'all' || item.dataset.cat === cat;
+      item.classList.toggle('hidden', !show);
+      if (show) item.querySelector('.pub-num').textContent = idx++;
     });
   }
 
-  (function() {
+  (function () {
     const hash = location.hash.replace('#', '') || 'about';
-    const valid = ['about','pubs','exp','oss'];
+    const valid = ['about', 'pubs', 'exp', 'oss'];
     showTab(valid.includes(hash) ? hash : 'about');
   })();
 </script>
