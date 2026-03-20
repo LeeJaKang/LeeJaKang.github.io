@@ -11,7 +11,7 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --sidebar-w: 300px;
+      --sidebar-w: 450px;
       --accent: #2563eb;
       --text: #111827;
       --sub: #374151;
@@ -43,61 +43,61 @@
       overflow-y: auto;
       display: flex;
       flex-direction: column;
-      padding: 2.5rem 2rem 2rem;
+      padding: 3.75rem 3rem 3rem;
       z-index: 100;
     }
 
     .sidebar-photo {
-      width: 150px;
-      height: 150px;
+      width: 225px;
+      height: 225px;
       border-radius: 50%;
       background: linear-gradient(135deg, #2563eb, #1e40af);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 2.8rem;
+      font-size: 4.2rem;
       font-weight: 700;
       color: #fff;
       letter-spacing: -1px;
-      margin-bottom: 1.2rem;
+      margin-bottom: 1.8rem;
       overflow: hidden;
       flex-shrink: 0;
     }
     .sidebar-photo img { width: 100%; height: 100%; object-fit: cover; }
 
     .sidebar-name {
-      font-size: 1.25rem;
+      font-size: 1.875rem;
       font-weight: 700;
       color: var(--text);
       letter-spacing: -0.02em;
       line-height: 1.2;
-      margin-bottom: 0.35rem;
+      margin-bottom: 0.525rem;
     }
     .sidebar-role {
-      font-size: 0.92rem;
+      font-size: 1.38rem;
       color: var(--accent);
       font-weight: 600;
       line-height: 1.4;
-      margin-bottom: 0.2rem;
+      margin-bottom: 0.3rem;
     }
     .sidebar-affil {
-      font-size: 0.88rem;
+      font-size: 1.32rem;
       color: var(--muted);
       line-height: 1.5;
-      margin-bottom: 1.6rem;
+      margin-bottom: 2.4rem;
     }
 
     .sidebar-links {
       display: flex;
       flex-direction: column;
-      gap: 0.55rem;
-      margin-bottom: 2rem;
+      gap: 0.825rem;
+      margin-bottom: 3rem;
     }
     .sidebar-links a {
       display: flex;
       align-items: center;
-      gap: 0.6rem;
-      font-size: 0.9rem;
+      gap: 0.9rem;
+      font-size: 1.35rem;
       color: var(--sub);
       text-decoration: none;
       font-weight: 500;
@@ -105,7 +105,7 @@
     }
     .sidebar-links a:hover { color: var(--accent); }
     .sidebar-links a svg {
-      width: 18px; height: 18px;
+      width: 27px; height: 27px;
       flex-shrink: 0;
       opacity: 0.6;
     }
@@ -113,19 +113,19 @@
     .sidebar-divider {
       height: 1px;
       background: var(--border);
-      margin-bottom: 1.25rem;
+      margin-bottom: 1.875rem;
     }
 
     .sidebar-nav {
       display: flex;
       flex-direction: column;
-      gap: 0.15rem;
+      gap: 0.225rem;
     }
     .nav-item {
       display: block;
-      padding: 0.55rem 0.85rem;
+      padding: 0.825rem 1.275rem;
       border-radius: 6px;
-      font-size: 0.95rem;
+      font-size: 1.425rem;
       font-weight: 500;
       color: var(--muted);
       cursor: pointer;
