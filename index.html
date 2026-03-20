@@ -146,7 +146,7 @@
     }
     .about-role { font-size: 1rem; color: var(--accent); font-weight: 600; margin-bottom: 0.15rem; }
     .about-affil { color: var(--muted); font-size: 0.9rem; margin-bottom: 1.2rem; }
-    .about-bio { font-size: 0.95rem; color: #333; line-height: 1.8; margin-bottom: 0; }
+    .about-bio { font-size: 0.95rem; color: #333; line-height: 1.8; }
 
     .about-section-title {
       font-size: 1rem;
@@ -166,7 +166,7 @@
       color: var(--text);
     }
 
-    /* ── AWARDS ── */
+    /* ── AWARDS (paper awards only, in About) ── */
     .award-list { display: flex; flex-direction: column; gap: 0; }
     .award-item {
       display: flex;
@@ -184,9 +184,65 @@
       color: var(--muted);
       padding-top: 0.1rem;
     }
-    .award-content {}
     .award-title { font-size: 0.9rem; font-weight: 600; }
     .award-body { font-size: 0.83rem; color: var(--muted); margin-top: 0.1rem; }
+
+    /* ── EDUCATION (inside About) ── */
+    .edu-list { display: flex; flex-direction: column; gap: 0; }
+    .edu-item {
+      padding: 0.85rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .edu-item:last-child { border-bottom: none; }
+    .edu-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 0.3rem;
+    }
+    .edu-school { font-weight: 700; font-size: 0.95rem; }
+    .edu-period { font-size: 0.82rem; color: var(--muted); font-style: italic; }
+    .edu-degree { font-size: 0.88rem; color: var(--accent); font-weight: 500; margin-top: 0.1rem; }
+    .edu-loc { font-size: 0.82rem; color: var(--muted); margin-top: 0.05rem; }
+    .edu-honors {
+      margin-top: 0.35rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+    }
+    .edu-honor-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      background: #f0f4ff;
+      color: var(--accent);
+      border-radius: 5px;
+      padding: 0.15rem 0.55rem;
+      font-size: 0.76rem;
+      font-weight: 600;
+    }
+
+    /* ── SKILLS ── */
+    .skills-grid { display: flex; flex-direction: column; gap: 0.8rem; }
+    .skill-row { display: flex; align-items: baseline; gap: 1rem; }
+    .skill-label {
+      flex-shrink: 0;
+      width: 140px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .skill-tag {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 0.2rem 0.6rem;
+      font-size: 0.8rem;
+    }
 
     /* ── SECTION TITLE (shared) ── */
     .section-title {
@@ -361,27 +417,6 @@
       font-weight: 600;
     }
 
-    /* ── SKILLS ── */
-    .skills-grid { display: flex; flex-direction: column; gap: 0.8rem; }
-    .skill-row { display: flex; align-items: baseline; gap: 1rem; }
-    .skill-label {
-      flex-shrink: 0;
-      width: 140px;
-      font-size: 0.82rem;
-      font-weight: 700;
-      color: var(--muted);
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-    }
-    .skill-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
-    .skill-tag {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      padding: 0.2rem 0.6rem;
-      font-size: 0.8rem;
-    }
-
     /* ── FOOTER ── */
     footer {
       background: white;
@@ -416,7 +451,6 @@
     <button class="nav-tab" data-tab="about"  onclick="showTab('about')">About</button>
     <button class="nav-tab" data-tab="pubs"   onclick="showTab('pubs')">Publications</button>
     <button class="nav-tab" data-tab="exp"    onclick="showTab('exp')">Experience</button>
-    <button class="nav-tab" data-tab="edu"    onclick="showTab('edu')">Education</button>
     <button class="nav-tab" data-tab="oss"    onclick="showTab('oss')">Open Source</button>
   </div>
 </nav>
@@ -461,46 +495,76 @@
         <span class="interest-tag">Physical Design Automation</span>
       </div>
 
+      <div class="about-section-title">Education</div>
+      <div class="edu-list">
+        <div class="edu-item">
+          <div class="edu-header">
+            <span class="edu-school">University of California, San Diego</span>
+            <span class="edu-period">Sep 2025 – present</span>
+          </div>
+          <div class="edu-degree">Ph.D. in Electrical &amp; Computer Engineering</div>
+          <div class="edu-loc">San Diego, California &nbsp;·&nbsp; Advisor: Prof. Andrew B. Kahng</div>
+          <div class="edu-honors">
+            <span class="edu-honor-tag">🏅 Centaur Graduate Fellowship</span>
+            <span class="edu-honor-tag">🏅 Jacobs Fellowship</span>
+          </div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-header">
+            <span class="edu-school">Pohang University of Science and Technology (POSTECH)</span>
+            <span class="edu-period">Feb 2023 – Jun 2025</span>
+          </div>
+          <div class="edu-degree">Ph.D. Student in Electrical Engineering (Transferred to UCSD)</div>
+          <div class="edu-loc">Pohang, Korea &nbsp;·&nbsp; Advisor: Prof. Seokhyeong Kang</div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-header">
+            <span class="edu-school">Pohang University of Science and Technology (POSTECH)</span>
+            <span class="edu-period">Feb 2021 – Feb 2023</span>
+          </div>
+          <div class="edu-degree">M.S. in Electrical Engineering</div>
+          <div class="edu-loc">Pohang, Korea &nbsp;·&nbsp; Advisor: Prof. Seokhyeong Kang</div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-header">
+            <span class="edu-school">Kyungpook National University</span>
+            <span class="edu-period">Mar 2019 – Feb 2021</span>
+          </div>
+          <div class="edu-degree">B.S. in Electronics Engineering</div>
+          <div class="edu-loc">Daegu, Korea</div>
+          <div class="edu-honors">
+            <span class="edu-honor-tag">🏆 Top 5% of Class</span>
+            <span class="edu-honor-tag">📈 Top 5% every semester (GPA 3.94–4.3)</span>
+          </div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-header">
+            <span class="edu-school">Hanseo University</span>
+            <span class="edu-period">Mar 2014 – Feb 2019</span>
+          </div>
+          <div class="edu-degree">B.S. Student in Aviation Electronics Engineering (Transferred to KNU)</div>
+          <div class="edu-loc">Taean, Korea</div>
+          <div class="edu-honors">
+            <span class="edu-honor-tag">🥇 Admitted as Valedictorian</span>
+            <span class="edu-honor-tag">🥇 Ranked 1st in class (3 semesters)</span>
+          </div>
+        </div>
+      </div>
+
       <div class="about-section-title">Awards &amp; Honors</div>
       <div class="award-list">
         <div class="award-item">
           <div class="award-year">2026</div>
-          <div class="award-content">
+          <div>
             <div class="award-title">Best Paper Award Nomination — ASP-DAC 2026</div>
             <div class="award-body">For "Au-MEDAL: Adaptable Grid Router with Metal Edge Detection and Layer Integration," Tokyo, Japan</div>
           </div>
         </div>
         <div class="award-item">
-          <div class="award-year">2025</div>
-          <div class="award-content">
-            <div class="award-title">Centaur Graduate Fellowship for Electrical Engineering — UC San Diego ECE</div>
-            <div class="award-body">Awarded to an exceptionally select group of incoming ECE doctoral students; provides full tuition and stipend support ($69,569) for the first year of doctoral study.</div>
-          </div>
-        </div>
-        <div class="award-item">
-          <div class="award-year">2025</div>
-          <div class="award-content">
-            <div class="award-title">Jacobs Fellowship — Jacobs School of Engineering, UC San Diego</div>
-          </div>
-        </div>
-        <div class="award-item">
           <div class="award-year">2023</div>
-          <div class="award-content">
+          <div>
             <div class="award-title">Best Poster Award — ISOCC 2023</div>
             <div class="award-body">For "Advanced Parasitic Capacitance Extraction using Active Learning," Jeju, Korea</div>
-          </div>
-        </div>
-        <div class="award-item">
-          <div class="award-year">2019–21</div>
-          <div class="award-content">
-            <div class="award-title">Top Academic Records — Kyungpook National University</div>
-            <div class="award-body">Graduated top 5% of class (B.S.); ranked top 5% every semester (GPA 3.94–4.3)</div>
-          </div>
-        </div>
-        <div class="award-item">
-          <div class="award-year">2017–18</div>
-          <div class="award-content">
-            <div class="award-title">Ranked 1st in Class (3 semesters) &amp; Admitted as Valedictorian — Hanseo University</div>
           </div>
         </div>
       </div>
@@ -661,7 +725,6 @@
     </div>
   </div>
 
-  <!-- Patents -->
   <div class="subsection-title">Patents</div>
   <div class="patent-list">
     <div class="patent-item">
@@ -807,65 +870,6 @@
 </div>
 
 <!-- ══════════════════════════════════════════
-     EDUCATION
-══════════════════════════════════════════ -->
-<div class="page" id="page-edu">
-  <div class="section-title">Education</div>
-  <div class="timeline">
-    <div class="tl-item">
-      <div class="tl-header">
-        <span class="tl-title">University of California, San Diego</span>
-        <span class="tl-period">Sep 2025 – present</span>
-      </div>
-      <div class="tl-role">Ph.D. Student in Electrical &amp; Computer Engineering</div>
-      <div class="tl-loc">San Diego, California &nbsp;·&nbsp; Advisor: Prof. Andrew B. Kahng</div>
-      <ul class="tl-desc">
-        <li>Centaur Graduate Fellowship + Jacobs Fellowship recipient</li>
-        <li>MLEDA, automatic standard cell layout generation, DTCO</li>
-      </ul>
-    </div>
-    <div class="tl-item">
-      <div class="tl-header">
-        <span class="tl-title">Pohang University of Science and Technology (POSTECH)</span>
-        <span class="tl-period">Feb 2023 – Jun 2025</span>
-      </div>
-      <div class="tl-role">Ph.D. Student in Electrical Engineering (Transferred to UCSD)</div>
-      <div class="tl-loc">Pohang, Korea &nbsp;·&nbsp; Advisor: Prof. Seokhyeong Kang</div>
-      <ul class="tl-desc">
-        <li>Automatic standard cell layout generation, DTCO, design space optimization</li>
-      </ul>
-    </div>
-    <div class="tl-item">
-      <div class="tl-header">
-        <span class="tl-title">Pohang University of Science and Technology (POSTECH)</span>
-        <span class="tl-period">Feb 2021 – Feb 2023</span>
-      </div>
-      <div class="tl-role">M.S. in Electrical Engineering</div>
-      <div class="tl-loc">Pohang, Korea &nbsp;·&nbsp; Advisor: Prof. Seokhyeong Kang</div>
-      <ul class="tl-desc">
-        <li>MLEDA, design technology co-optimization, design space optimization</li>
-      </ul>
-    </div>
-    <div class="tl-item">
-      <div class="tl-header">
-        <span class="tl-title">Kyungpook National University</span>
-        <span class="tl-period">Mar 2019 – Feb 2021</span>
-      </div>
-      <div class="tl-role">B.S. in Electronics Engineering &nbsp;·&nbsp; Top 5% of Class</div>
-      <div class="tl-loc">Daegu, Korea</div>
-    </div>
-    <div class="tl-item">
-      <div class="tl-header">
-        <span class="tl-title">Hanseo University</span>
-        <span class="tl-period">Mar 2014 – Feb 2019</span>
-      </div>
-      <div class="tl-role">B.S. Student in Aviation Electronics Engineering (Transferred to KNU)</div>
-      <div class="tl-loc">Taean, Korea &nbsp;·&nbsp; Admitted as Valedictorian &nbsp;·&nbsp; Ranked 1st in class (3 semesters)</div>
-    </div>
-  </div>
-</div>
-
-<!-- ══════════════════════════════════════════
      OPEN SOURCE
 ══════════════════════════════════════════ -->
 <div class="page" id="page-oss">
@@ -939,7 +943,7 @@
 
   (function() {
     const hash = location.hash.replace('#', '') || 'about';
-    const valid = ['about','pubs','exp','edu','oss'];
+    const valid = ['about','pubs','exp','oss'];
     showTab(valid.includes(hash) ? hash : 'about');
   })();
 </script>
