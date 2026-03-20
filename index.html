@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jakang Lee – ECE PhD @ UC San Diego</title>
+  <style>
+    :root {
+      --accent: #1a6fbf;
+      --accent-light: #e8f0fb;
+      --text: #1a1a1a;
+      --muted: #555;
+      --border: #dde3ec;
+      --bg: #ffffff;
+      --section-gap: 3rem;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.7;
+      font-size: 15px;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      padding: 0.75rem 1rem;
+    }
+    nav a {
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 0.88rem;
+      font-weight: 500;
+      letter-spacing: 0.03em;
+      transition: color 0.2s;
+    }
+    nav a:hover { color: var(--accent); }
+
+    /* ── HERO ── */
+    header {
+      max-width: 800px;
+      margin: 4rem auto 0;
+      padding: 0 2rem 3rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    header h1 {
+      font-size: 2.4rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+    header .subtitle {
+      font-size: 1.05rem;
+      color: var(--accent);
+      font-weight: 500;
+    }
+    header .tagline {
+      color: var(--muted);
+      max-width: 580px;
+      margin-top: 0.25rem;
+    }
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    .contact-links a {
+      text-decoration: none;
+      color: var(--accent);
+      font-size: 0.88rem;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+    .contact-links a:hover { text-decoration: underline; }
+
+    /* ── MAIN CONTENT ── */
+    main {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 2rem 6rem;
+    }
+
+    section {
+      margin-bottom: var(--section-gap);
+    }
+
+    h2 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--accent);
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--accent);
+      margin-bottom: 1.5rem;
+    }
+
+    /* ── ENTRY ROWS ── */
+    .entry {
+      margin-bottom: 1.4rem;
+    }
+    .entry-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 0.25rem;
+    }
+    .entry-title {
+      font-weight: 600;
+      font-size: 0.97rem;
+    }
+    .entry-meta {
+      color: var(--muted);
+      font-size: 0.85rem;
+      font-style: italic;
+    }
+    .entry-sub {
+      color: var(--muted);
+      font-size: 0.88rem;
+      margin-top: 0.1rem;
+    }
+    .entry ul {
+      margin-top: 0.4rem;
+      padding-left: 1.3rem;
+    }
+    .entry ul li {
+      font-size: 0.88rem;
+      color: #333;
+      margin-bottom: 0.2rem;
+    }
+
+    /* ── BADGES ── */
+    .badge {
+      display: inline-block;
+      background: var(--accent-light);
+      color: var(--accent);
+      border-radius: 4px;
+      padding: 0.15rem 0.5rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      margin-left: 0.5rem;
+      vertical-align: middle;
+    }
+
+    /* ── PUBLICATIONS ── */
+    .pub-group-title {
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin: 1.2rem 0 0.5rem;
+    }
+    .pub {
+      margin-bottom: 0.75rem;
+      padding-left: 1rem;
+      border-left: 3px solid var(--border);
+      font-size: 0.88rem;
+      line-height: 1.6;
+    }
+    .pub strong { color: var(--text); }
+    .pub .venue {
+      color: var(--accent);
+      font-style: italic;
+    }
+    .pub .award {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: #b45309;
+      background: #fef3c7;
+      border-radius: 3px;
+      padding: 0.1rem 0.4rem;
+      margin-left: 0.4rem;
+    }
+
+    /* ── SKILLS TABLE ── */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 0.5rem 1.5rem;
+      font-size: 0.88rem;
+    }
+    .skill-cat {
+      font-weight: 600;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    /* ── OPEN SOURCE ── */
+    .oss-entry {
+      margin-bottom: 1.2rem;
+    }
+    .oss-entry a {
+      color: var(--accent);
+      font-size: 0.8rem;
+      text-decoration: none;
+    }
+    .oss-entry a:hover { text-decoration: underline; }
+
+    /* ── AWARDS ── */
+    .award-entry {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 0.2rem;
+      margin-bottom: 0.9rem;
+    }
+    .award-left {}
+    .award-title { font-weight: 600; font-size: 0.97rem; }
+    .award-org { font-size: 0.85rem; color: var(--muted); }
+    .award-year { font-size: 0.85rem; color: var(--muted); font-style: italic; }
+    .award-desc { font-size: 0.85rem; color: #333; margin-top: 0.15rem; }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.8rem;
+      color: #999;
+      border-top: 1px solid var(--border);
+    }
+
+    @media (max-width: 600px) {
+      header h1 { font-size: 1.8rem; }
+      nav { gap: 1rem; flex-wrap: wrap; }
+      .entry-header { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="#about">About</a>
+  <a href="#education">Education</a>
+  <a href="#experience">Experience</a>
+  <a href="#publications">Publications</a>
+  <a href="#oss">Open Source</a>
+  <a href="#awards">Awards</a>
+  <a href="#skills">Skills</a>
+</nav>
+
+<!-- ── HERO ── -->
+<header id="about">
+  <h1>Jakang Lee</h1>
+  <div class="subtitle">Ph.D. Student · Electrical &amp; Computer Engineering · UC San Diego</div>
+  <p class="tagline">
+    Research in ML-driven EDA, automatic standard cell layout generation, and design technology co-optimization.
+    Advised by <strong>Prof. Andrew B. Kahng</strong> at the ABKGroup.
+  </p>
+  <div class="contact-links">
+    <a href="mailto:jal216@ucsd.edu">✉ jal216@ucsd.edu</a>
+    <a href="https://linkedin.com/in/jakanglee" target="_blank">in linkedin.com/in/jakanglee</a>
+    <a href="https://scholar.google.com" target="_blank">&#127891; Google Scholar</a>
+    <a href="tel:+18582886436">&#128222; +1 858-288-6436</a>
+  </div>
+</header>
+
+<main>
+
+  <!-- ── EDUCATION ── -->
+  <section id="education">
+    <h2>Education</h2>
+
+    <div class="entry">
+      <div class="entry-header">
+        <span class="entry-title">University of California, San Diego</span>
+        <span class="entry-meta">San Diego, CA · Sep 2025 – present</span>
+      </div>
+      <div class="entry-sub">Ph.D. Student, Electrical and Computer Engineering</div>
+      <ul>
+        <li>MLEDA, Automatic Standard Cell Layout Generation, Design Technology Co-Optimization</li>
+        <li>Advisor: Prof. Andrew B. Kahng</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header">
+        <span class="entry-title">Pohang University of Science and Technology (POSTECH)</span>
+        <span class="entry-meta">Pohang, Korea · Feb 2023 – Jun 2025</span>
+      </div>
+      <div class="entry-sub">Ph.D. Student, Electrical Engineering <em>(Transferred to UCSD)</em></div>
+      <ul>
+        <li>Automatic Standard Cell Layout Generation, DTCO, Design Space Optimization</li>
+        <li>Advisor: Prof. Seokhyeong Kang</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header">
+        <span class="entry-title">Pohang University of Science and Technology (POSTECH)</span>
+        <span class="entry-meta">Pohang, Korea · Feb 2021 – Feb 2023</span>
+      </div>
+      <div class="entry-sub">M.S., Electrical Engineering</div>
+      <ul>
+        <li>MLEDA, Design Technology Co-Optimization, Design Space Optimization</li>
+        <li>Advisor: Prof. Seokhyeong Kang</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header">
+        <span class="entry-title">Kyungpook National University</span>
+        <span class="entry-meta">Daegu, Korea · Mar 2019 – Feb 2021</span>
+      </div>
+      <div class="entry-sub">B.S., Electronics Engineering <strong>(Top 5% of Class)</strong></div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header">
+        <span class="entry-title">Hanseo University</span>
+        <span class="entry-meta">Taean, Korea · Mar 2014 – Feb 2019</span>
+      </div>
+      <div class="entry-sub">B.S. Student, Aviation Electronics Engineering <em>(Transferred · Admitted as Valedictorian)</em></div>
+    </div>
+  </section>
+
+  <!-- ── EXPERIENCE ── -->
+  <section id="experience">
+    <h2>Experience</h2>
+
+    <div class="entry">
+      <div class="entry-header">
+        <span class="entry-title">University of California, San Diego</span>
+        <span class="entry-meta">San Diego, CA · Feb 2024 – Mar 2025</span>
+      </div>
+      <div class="entry-sub">Visiting Ph.D. Student (Advisor: Prof. Andrew B. Kahng)</div>
+      <ul>
+        <li>Implemented standard cell layout generation using SMT</li>
+        <li>Developed design rule check at the nanometer scale</li>
+        <li>Implemented design rule check for interactions between different layers</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header">
+        <span class="entry-title">Samsung Electronics Co., Ltd.</span>
+        <span class="entry-meta">Hwaseong, Korea · Jul 2023 – Sep 2023</span>
+      </div>
+      <div class="entry-sub">Project Intern, Design Technology Team, Memory Division</div>
+      <ul>
+        <li>Implemented Bayesian optimization with Tree Parzen Estimator as a surrogate model in Python</li>
+        <li>Wrapped program in Tcl for compatibility with Synopsys DSO.ai run scripts</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header">
+        <span class="entry-title">Republic of Korea Air Force</span>
+        <span class="entry-meta">Chungju, Korea · Feb 2014 – Feb 2017</span>
+      </div>
+      <div class="entry-sub">Aviation Electronic Engineer</div>
+      <ul>
+        <li>Aircraft Instrument Maintenance Department</li>
+        <li>Aviation Electronic Engineering and Maintenance</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ── PUBLICATIONS ── -->
+  <section id="publications">
+    <h2>Publications</h2>
+
+    <div class="pub-group-title">Standard Cell / DTCO</div>
+
+    <div class="pub">
+      A. B. Kahng, S. Kang, S. Kim, <strong>J. Lee</strong>, and D. Yoon,
+      "Au-MEDAL: Adaptable Grid Router with Metal Edge Detection and Layer Integration,"
+      <span class="venue">ASP-DAC, 2026.</span>
+      <span class="award">Best Paper Award Nominee</span>
+    </div>
+    <div class="pub">
+      C.-K. Cheng, A. B. Kahng, B. Kang, S. Kang, <strong>J. Lee</strong>, and B. Lin,
+      "SO3-Cell: Standard Cell Layout Synthesis Framework for Simultaneous Optimization of Topology, Placement, and Routing,"
+      <span class="venue">ICCAD, 2025.</span>
+    </div>
+    <div class="pub">
+      <strong>J. Lee</strong>, S. Jang, J. Lee, and S. Kang,
+      "LIBMixer: An all-MLP Architecture for Cell Library Characterization towards Design Space Optimization,"
+      <span class="venue">ASP-DAC, 2025.</span>
+    </div>
+    <div class="pub">
+      <strong>J. Lee</strong>, J. Lee, S. Park, and S. Kang,
+      "Multi-Source Transfer Learning for Design Technology Co-Optimization,"
+      <span class="venue">ISLPED, 2023.</span>
+    </div>
+
+    <div class="pub-group-title">Parasitic Extraction / RC Modeling</div>
+
+    <div class="pub">
+      J. Cho, J. Ahn, <strong>J. Lee</strong>, J. Lee, S. Park, and S. Kang,
+      "Differentiable Fill Insertion with Explicit Delay Optimization,"
+      <span class="venue">DAC, 2026. (to appear)</span>
+    </div>
+    <div class="pub">
+      J. Yoon, <strong>J. Lee</strong>, D. Kim, J. Hur, and S. Kang,
+      "ParaFormer: A Hybrid Graph Neural Network and Transformer Approach for Pre-Routing Parasitic RC Prediction,"
+      <span class="venue">ASP-DAC, 2025.</span>
+    </div>
+    <div class="pub">
+      J. Cho, S. Park, <strong>J. Lee</strong>, S.-Y. Lee, J. Ahn, and S. Kang,
+      "RL-Fill: Timing-Aware Fill Insertion Using Reinforcement Learning,"
+      <span class="venue">ICCAD, 2024.</span>
+    </div>
+    <div class="pub">
+      D. Kim, <strong>J. Lee</strong>, and S. Kang,
+      "Advanced Parasitic Capacitance Extraction using Active Learning,"
+      <span class="venue">ISOCC, 2023.</span>
+      <span class="award">Best Poster Award</span>
+    </div>
+
+    <div class="pub-group-title">AI-Driven Physical Design</div>
+
+    <div class="pub">
+      J. Ahn, J. Cho, J. Seo, J. Lee, <strong>J. Lee</strong>, and S. Kang,
+      "A Heterogeneous Graph-based Gate Sizer Integrating Graph Attention Network and Transformer,"
+      <span class="venue">ASP-DAC, 2026.</span>
+    </div>
+    <div class="pub">
+      A. Ghose, J. Jang, A. B. Kahng, and <strong>J. Lee</strong>,
+      "Automated QoR improvement in OpenROAD with coding agents,"
+      <span class="venue">arXiv:2601.06268, 2026.</span>
+    </div>
+    <div class="pub">
+      D. Kim, M. Kim, J. Hur, <strong>J. Lee</strong>, J. Cho, and S. Kang,
+      "TA3D: Timing-Aware 3D IC Partitioning and Placement by Optimizing the Critical Path,"
+      <span class="venue">MLCAD, 2024.</span>
+    </div>
+    <div class="pub">
+      D. Kim, <strong>J. Lee</strong>, and S. Kang,
+      "Routability Prediction using Deep Hierarchical Classification and Regression,"
+      <span class="venue">DATE, 2023.</span>
+    </div>
+
+    <div class="pub-group-title">Other</div>
+    <div class="pub">
+      S. Lee, J. Yoon, and <strong>J. Lee</strong>,
+      "Giga-sample Data Acquisition Method for High-speed DDR5 SDRAM,"
+      <span class="venue">ISOCC, 2021.</span>
+    </div>
+
+    <div class="pub-group-title">Patents</div>
+    <div class="pub">
+      S. Kang, D. Kim, and <strong>J. Lee</strong>,
+      "Apparatus and method for routability prediction using hierarchical classification and regression model, transfer learning method,"
+      <span class="venue">KR20250136086A (Pending)</span>
+    </div>
+    <div class="pub">
+      S. Kang, <strong>J. Lee</strong>, J. Lee, and S. Park,
+      "Integrated circuit design system performing DTCO,"
+      <span class="venue">KR20250165871A (Pending) · US20250356087A1 (Pending)</span>
+    </div>
+  </section>
+
+  <!-- ── OPEN SOURCE ── -->
+  <section id="oss">
+    <h2>Open-Source Contributions</h2>
+
+    <div class="oss-entry entry">
+      <div class="entry-header">
+        <span class="entry-title">NanGate45-Synopsys-Enablement</span>
+        <span class="entry-meta">ABKGroup, UC San Diego · 2025</span>
+      </div>
+      <a href="https://github.com/ABKGroup/NanGate45-Synopsys-Enablement" target="_blank">github.com/ABKGroup/NanGate45-Synopsys-Enablement</a>
+      <ul>
+        <li>Developed Synopsys EDA tool enablement for the NanGate45 open-source PDK, enabling post-route parasitic extraction and timing-driven P&amp;R</li>
+        <li>Repository has garnered 30+ GitHub stars across the academic EDA community</li>
+      </ul>
+    </div>
+
+    <div class="oss-entry entry">
+      <div class="entry-header">
+        <span class="entry-title">ASAP7-Synopsys-Enablement</span>
+        <span class="entry-meta">ABKGroup, UC San Diego · 2025 – present</span>
+      </div>
+      <a href="https://github.com/ABKGroup/ASAP7-Synopsys-Enablement" target="_blank">github.com/ABKGroup/ASAP7-Synopsys-Enablement</a>
+      <ul>
+        <li>Developed Synopsys EDA tool enablement for the ASAP7 7nm open-source PDK, including calibrated TLU+ and NXTGRD files</li>
+        <li>First Synopsys-based post-route extraction and timing analysis on this PDK</li>
+      </ul>
+    </div>
+
+    <div class="oss-entry entry">
+      <div class="entry-header">
+        <span class="entry-title">Au-MEDAL</span>
+        <span class="entry-meta">ABKGroup, UC San Diego · 2025 – present</span>
+      </div>
+      <a href="https://github.com/ABKGroup/Au-MEDAL" target="_blank">github.com/ABKGroup/Au-MEDAL</a>
+      <ul>
+        <li>Open-source release of the SMT-based standard cell router (published at ASP-DAC 2026, Best Paper Award Nominee)</li>
+      </ul>
+    </div>
+
+    <div class="oss-entry entry">
+      <div class="entry-header">
+        <span class="entry-title">Bug Fixes to OpenROAD ASAP7 Timing Libraries</span>
+        <span class="entry-meta">The OpenROAD Project (DARPA-funded) · 2025 – 2026</span>
+      </div>
+      <ul>
+        <li>Identified and corrected corner characterization errors in ASAP7 standard cell Liberty files — merged into asap7sc7p5t_28</li>
+        <li>Fully re-extracted ASAP7 multi-bit flip-flop timing libraries with previously missing corner data; contributed to OpenROAD-flow-scripts</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ── AWARDS ── -->
+  <section id="awards">
+    <h2>Awards &amp; Honors</h2>
+
+    <div class="award-entry">
+      <div class="award-left">
+        <div class="award-title">Best Paper Award Nomination <span class="badge">ASP-DAC 2026</span></div>
+        <div class="award-org">IEEE/ACM Asia South Pacific Design Automation Conference · Tokyo, Japan</div>
+        <div class="award-desc">"Au-MEDAL: Adaptable Grid Router with Metal Edge Detection and Layer Integration"</div>
+      </div>
+      <div class="award-year">2026</div>
+    </div>
+
+    <div class="award-entry">
+      <div class="award-left">
+        <div class="award-title">Centaur Graduate Fellowship for Electrical Engineering</div>
+        <div class="award-org">Dept. of ECE, UC San Diego · San Diego, CA</div>
+        <div class="award-desc">Awarded to a select group of incoming ECE doctoral students; full tuition and stipend support ($69,569) for the first year</div>
+      </div>
+      <div class="award-year">Fall 2025</div>
+    </div>
+
+    <div class="award-entry">
+      <div class="award-left">
+        <div class="award-title">Jacobs Fellowship</div>
+        <div class="award-org">Jacobs School of Engineering, UC San Diego · San Diego, CA</div>
+      </div>
+      <div class="award-year">Fall 2025</div>
+    </div>
+
+    <div class="award-entry">
+      <div class="award-left">
+        <div class="award-title">Best Poster Award <span class="badge">ISOCC 2023</span></div>
+        <div class="award-org">International SoC Design Conference · Jeju, Korea</div>
+        <div class="award-desc">"Advanced Parasitic Capacitance Extraction using Active Learning"</div>
+      </div>
+      <div class="award-year">2023</div>
+    </div>
+
+    <div class="award-entry">
+      <div class="award-left">
+        <div class="award-title">Top-ranked Academic Records</div>
+        <div class="award-org">Kyungpook National University</div>
+        <div class="award-desc">Graduated Top 5% of class (B.S.); multiple semesters ranked Top 5% with GPA up to 4.3</div>
+      </div>
+      <div class="award-year">2019–2021</div>
+    </div>
+
+    <div class="award-entry">
+      <div class="award-left">
+        <div class="award-title">Valedictorian &amp; Multiple Class Rankings</div>
+        <div class="award-org">Hanseo University</div>
+        <div class="award-desc">Admitted as Valedictorian; ranked 1st in class for Spring 2017, Fall 2017, Spring 2018</div>
+      </div>
+      <div class="award-year">2017–2019</div>
+    </div>
+  </section>
+
+  <!-- ── SKILLS ── -->
+  <section id="skills">
+    <h2>Skills</h2>
+    <div class="skills-grid">
+      <span class="skill-cat">Programming</span>
+      <span>C, C++, Verilog, Python, Tcl, Csh, Bash</span>
+      <span class="skill-cat">Xilinx</span>
+      <span>Vivado, Vitis</span>
+      <span class="skill-cat">Cadence</span>
+      <span>Innovus, Virtuoso</span>
+      <span class="skill-cat">Synopsys</span>
+      <span>IC Compiler II, Design Compiler, PrimeTime, SiliconSmart, StarRC, DSO.ai</span>
+      <span class="skill-cat">Open-source EDA</span>
+      <span>OpenROAD, OpenDB</span>
+      <span class="skill-cat">Calibre</span>
+      <span>LVS, DRC, PEX</span>
+      <span class="skill-cat">Other</span>
+      <span>Linux server administration, Docker</span>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  &copy; 2026 Jakang Lee &nbsp;·&nbsp; jal216@ucsd.edu
+</footer>
+
+</body>
+</html>
