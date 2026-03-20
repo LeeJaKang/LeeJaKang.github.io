@@ -380,6 +380,7 @@
     <button class="nav-tab" data-tab="news"     onclick="showTab('news')">News</button>
     <button class="nav-tab" data-tab="pubs"     onclick="showTab('pubs')">Publications</button>
     <button class="nav-tab" data-tab="exp"      onclick="showTab('exp')">Experience</button>
+    <button class="nav-tab" data-tab="edu"      onclick="showTab('edu')">Education</button>
     <button class="nav-tab" data-tab="oss"      onclick="showTab('oss')">Open Source</button>
   </div>
 </nav>
@@ -411,6 +412,7 @@
       <h1>Jakang Lee</h1>
       <div class="about-role">Ph.D. Student in Electrical &amp; Computer Engineering</div>
       <div class="about-affil">UC San Diego &nbsp;·&nbsp; ABKGroup &nbsp;·&nbsp; Advisor: Prof. Andrew B. Kahng</div>
+      <p class="about-bio">I work at the intersection of EDA automation and machine learning, focusing on automatic standard cell layout generation and design technology co-optimization (DTCO). My goal is to push the boundaries of next-generation semiconductor design through intelligent automation.</p>
       <div class="about-section-title">Research Interests</div>
       <div class="interest-list">
         <span class="interest-tag">Standard Cell Layout Generation</span>
@@ -481,6 +483,22 @@
   <div class="news-item">
     <div class="news-date">Oct 2023</div>
     <div class="news-text"><span class="tag tag-award">Award</span>Won <strong>Best Poster Award</strong> at ISOCC 2023 for parasitic capacitance extraction work.</div>
+  </div>
+  <div class="news-item">
+    <div class="news-date">Feb 2023</div>
+    <div class="news-text"><span class="tag tag-new">Degree</span>Received <strong>M.S. in ECE</strong> from POSTECH.</div>
+  </div>
+  <div class="news-item">
+    <div class="news-date">Mar 2023</div>
+    <div class="news-text"><span class="tag tag-paper">Paper</span>Paper accepted at <strong>DATE 2023</strong>: "Routability Prediction using Deep Hierarchical Classification and Regression."</div>
+  </div>
+  <div class="news-item">
+    <div class="news-date">Jun 2023</div>
+    <div class="news-text"><span class="tag tag-paper">Paper</span>Paper accepted at <strong>ISLPED 2023</strong>: "Multi-Source Transfer Learning for Design Technology Co-Optimization."</div>
+  </div>
+  <div class="news-item">
+    <div class="news-date">Feb 2021</div>
+    <div class="news-text"><span class="tag tag-new">New</span>Started M.S. at <strong>POSTECH ECE</strong> under Prof. Seokhyeong Kang.</div>
   </div>
 </div>
 
@@ -594,19 +612,8 @@
 
 <!-- ── EXPERIENCE ── -->
 <div class="page" id="page-exp">
-  <div class="section-title">Experience &amp; Education</div>
+  <div class="section-title">Experience</div>
   <div class="timeline">
-    <div class="tl-item">
-      <div class="tl-header">
-        <span class="tl-title">University of California, San Diego</span>
-        <span class="tl-period">Sep 2025 – present</span>
-      </div>
-      <div class="tl-role">Ph.D. Student, ECE &nbsp;·&nbsp; Advisor: Prof. Andrew B. Kahng</div>
-      <ul class="tl-desc">
-        <li>Centaur Graduate Fellowship + Jacobs Fellowship recipient</li>
-        <li>MLEDA, standard cell layout generation, DTCO</li>
-      </ul>
-    </div>
     <div class="tl-item">
       <div class="tl-header">
         <span class="tl-title">University of California, San Diego (Visiting)</span>
@@ -631,6 +638,31 @@
     </div>
     <div class="tl-item">
       <div class="tl-header">
+        <span class="tl-title">Republic of Korea Air Force</span>
+        <span class="tl-period">Feb 2014 – Feb 2017</span>
+      </div>
+      <div class="tl-role">Aviation Electronic Engineer &nbsp;·&nbsp; Mandatory Military Service</div>
+    </div>
+  </div>
+</div>
+
+<!-- ── EDUCATION ── -->
+<div class="page" id="page-edu">
+  <div class="section-title">Education</div>
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-header">
+        <span class="tl-title">University of California, San Diego</span>
+        <span class="tl-period">Sep 2025 – present</span>
+      </div>
+      <div class="tl-role">Ph.D. Student, ECE &nbsp;·&nbsp; Advisor: Prof. Andrew B. Kahng</div>
+      <ul class="tl-desc">
+        <li>Centaur Graduate Fellowship + Jacobs Fellowship recipient</li>
+        <li>MLEDA, standard cell layout generation, DTCO</li>
+      </ul>
+    </div>
+    <div class="tl-item">
+      <div class="tl-header">
         <span class="tl-title">POSTECH</span>
         <span class="tl-period">Feb 2021 – Jun 2025</span>
       </div>
@@ -645,13 +677,6 @@
         <span class="tl-period">Mar 2019 – Feb 2021</span>
       </div>
       <div class="tl-role">B.S., Electronics Engineering &nbsp;·&nbsp; Top 5% of Class</div>
-    </div>
-    <div class="tl-item">
-      <div class="tl-header">
-        <span class="tl-title">Republic of Korea Air Force</span>
-        <span class="tl-period">Feb 2014 – Feb 2017</span>
-      </div>
-      <div class="tl-role">Aviation Electronic Engineer &nbsp;·&nbsp; Mandatory Military Service</div>
     </div>
   </div>
 </div>
@@ -734,7 +759,7 @@
   // on load, check hash
   (function() {
     const hash = location.hash.replace('#', '') || 'about';
-    const valid = ['about','news','pubs','exp','oss'];
+    const valid = ['about','news','pubs','exp','edu','oss'];
     showTab(valid.includes(hash) ? hash : 'about');
   })();
 </script>
