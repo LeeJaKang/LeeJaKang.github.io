@@ -334,6 +334,14 @@
       color: var(--text);
       line-height: 1.5;
     }
+    .pub-title a {
+      color: var(--text);
+      text-decoration: none;
+    }
+    .pub-title a:hover {
+      color: var(--accent);
+      text-decoration: underline;
+    }
     .pub-award-badge {
       display: inline-block;
       background: #fef9c3;
@@ -359,26 +367,6 @@
       margin-top: 0.15rem;
     }
 
-    /* Patents */
-    .patent-item {
-      padding: 1rem 0;
-      border-bottom: 1px solid var(--border);
-      font-size: 0.97rem;
-      color: var(--sub);
-      line-height: 1.75;
-    }
-    .patent-item:first-child { padding-top: 0; }
-    .patent-item:last-child { border-bottom: none; padding-bottom: 0; }
-    .patent-id {
-      font-size: 0.83rem;
-      font-weight: 700;
-      color: var(--accent);
-      background: #eff6ff;
-      border-radius: 4px;
-      padding: 0.12rem 0.5rem;
-      margin-right: 0.45rem;
-    }
-    .patent-status { color: var(--muted); font-style: italic; font-size: 0.9rem; }
 
     /* ══════════════════════════════
        EXPERIENCE
@@ -531,7 +519,7 @@
   <div class="page" id="page-about">
     <div class="page-title">About</div>
 
-    <p class="about-bio">I work at the intersection of EDA automation and machine learning, focusing on automatic standard cell layout generation and design technology co-optimization (DTCO). My goal is to push the boundaries of next-generation semiconductor design through intelligent automation.</p>
+    <p class="about-bio">I am a Ph.D. student in Electrical and Computer Engineering at UC San Diego, working in the <a href="https://abkgroup.ucsd.edu" target="_blank" style="color:var(--accent);text-decoration:none;">ABKGroup</a> under the supervision of Prof. Andrew B. Kahng. My primary research focuses on automatic standard cell layout generation and design technology co-optimization (DTCO). I also explore the application of machine learning to broader EDA problems, aiming to advance intelligent automation in next-generation semiconductor design.</p>
 
     <div class="section-heading">Research Interests</div>
     <div class="interest-list">
@@ -616,15 +604,6 @@
       </div>
     </div>
 
-    <div class="section-heading">Skills</div>
-    <div class="skills-table">
-      <div class="skill-row"><span class="skill-cat">Programming</span><span class="skill-val">C, C++, Python, Verilog, Tcl, Bash</span></div>
-      <div class="skill-row"><span class="skill-cat">Synopsys</span><span class="skill-val">IC Compiler II, Design Compiler, PrimeTime, SiliconSmart, StarRC, DSO.ai</span></div>
-      <div class="skill-row"><span class="skill-cat">Cadence</span><span class="skill-val">Innovus, Virtuoso</span></div>
-      <div class="skill-row"><span class="skill-cat">Open-source EDA</span><span class="skill-val">OpenROAD, OpenDB</span></div>
-      <div class="skill-row"><span class="skill-cat">Calibre</span><span class="skill-val">LVS, DRC, PEX</span></div>
-      <div class="skill-row"><span class="skill-cat">Other</span><span class="skill-val">Xilinx Vivado/Vitis, Linux Server, Docker</span></div>
-    </div>
   </div>
 
   <!-- PUBLICATIONS -->
@@ -642,7 +621,7 @@
       <div class="pub-num">1</div>
       <div class="pub-body">
         <div class="pub-title">Au-MEDAL: Adaptable Grid Router with Metal Edge Detection and Layer Integration<span class="pub-award-badge">Best Paper Nominee</span></div>
-        <div class="pub-authors">A. B. Kahng, S. Kang, S. Kim, <strong>J. Lee</strong>, D. Yoon</div>
+        <div class="pub-authors">Andrew B. Kahng, Seokhyeong Kang, Sehyeon Kim, <strong>Jakang Lee</strong>, Dooseok Yoon</div>
         <div class="pub-venue">ASP-DAC 2026</div>
       </div>
     </div>
@@ -650,7 +629,7 @@
       <div class="pub-num">2</div>
       <div class="pub-body">
         <div class="pub-title">Differentiable Fill Insertion with Explicit Delay Optimization</div>
-        <div class="pub-authors">J. Cho, J. Ahn, <strong>J. Lee</strong>, J. Lee, S. Park, S. Kang</div>
+        <div class="pub-authors">Jinoh Cho, Jinmo Ahn, <strong>Jakang Lee</strong>, Jaeseung Lee, Seonghyeon Park, Seokhyeong Kang</div>
         <div class="pub-venue">DAC 2026 (to appear)</div>
       </div>
     </div>
@@ -658,96 +637,108 @@
       <div class="pub-num">3</div>
       <div class="pub-body">
         <div class="pub-title">A Heterogeneous Graph-based Gate Sizer Integrating Graph Attention Network and Transformer</div>
-        <div class="pub-authors">J. Ahn, J. Cho, J. Seo, J. Lee, <strong>J. Lee</strong>, S. Kang</div>
+        <div class="pub-authors">Jinmo Ahn, Jinoh Cho, Jaemin Seo, Jaeseung Lee, <strong>Jakang Lee</strong>, Seokhyeong Kang</div>
         <div class="pub-venue">ASP-DAC 2026</div>
       </div>
     </div>
     <div class="pub-item" data-cat="ml">
       <div class="pub-num">4</div>
       <div class="pub-body">
-        <div class="pub-title">Automated QoR improvement in OpenROAD with coding agents</div>
-        <div class="pub-authors">A. Ghose, J. Jang, A. B. Kahng, <strong>J. Lee</strong></div>
+        <div class="pub-title"><a href="https://arxiv.org/abs/2601.06268" target="_blank">Automated QoR improvement in OpenROAD with coding agents</a></div>
+        <div class="pub-authors">Amur Ghose, Junyeong Jang, Andrew B. Kahng, <strong>Jakang Lee</strong></div>
         <div class="pub-venue">arXiv:2601.06268</div>
       </div>
     </div>
     <div class="pub-item" data-cat="dtco">
       <div class="pub-num">5</div>
       <div class="pub-body">
-        <div class="pub-title">SO3-Cell: Standard Cell Layout Synthesis Framework for Simultaneous Optimization of Topology, Placement, and Routing</div>
-        <div class="pub-authors">C.-K. Cheng, A. B. Kahng, B. Kang, S. Kang, <strong>J. Lee</strong>, B. Lin</div>
+        <div class="pub-title"><a href="https://ieeexplore.ieee.org/document/11240677/" target="_blank">SO3-Cell: Standard Cell Layout Synthesis Framework for Simultaneous Optimization of Topology, Placement, and Routing</a></div>
+        <div class="pub-authors">Chung-Kuan Cheng, Andrew B. Kahng, Byeonggon Kang, Seokhyeong Kang, <strong>Jakang Lee</strong>, Bill Lin</div>
         <div class="pub-venue">ICCAD 2025</div>
       </div>
     </div>
     <div class="pub-item" data-cat="dtco">
       <div class="pub-num">6</div>
       <div class="pub-body">
-        <div class="pub-title">LIBMixer: An all-MLP Architecture for Cell Library Characterization towards Design Space Optimization</div>
-        <div class="pub-authors">J. Lee, S. Jang, <strong>J. Lee</strong>, S. Kang</div>
+        <div class="pub-title"><a href="https://dl.acm.org/doi/10.1145/3658617.3697602" target="_blank">LIBMixer: An all-MLP Architecture for Cell Library Characterization towards Design Space Optimization</a></div>
+        <div class="pub-authors">Jaeseung Lee, Sunggyu Jang, <strong>Jakang Lee</strong>, Seokhyeong Kang</div>
         <div class="pub-venue">ASP-DAC 2025</div>
       </div>
     </div>
     <div class="pub-item" data-cat="parasitic">
       <div class="pub-num">7</div>
       <div class="pub-body">
-        <div class="pub-title">ParaFormer: A Hybrid Graph Neural Network and Transformer Approach for Pre-Routing Parasitic RC Prediction</div>
-        <div class="pub-authors">J. Yoon, <strong>J. Lee</strong>, D. Kim, J. Hur, S. Kang</div>
+        <div class="pub-title"><a href="https://dl.acm.org/doi/10.1145/3658617.3697599" target="_blank">ParaFormer: A Hybrid Graph Neural Network and Transformer Approach for Pre-Routing Parasitic RC Prediction</a></div>
+        <div class="pub-authors">Jongho Yoon, <strong>Jakang Lee</strong>, Donggyu Kim, Junseok Hur, Seokhyeong Kang</div>
         <div class="pub-venue">ASP-DAC 2025</div>
       </div>
     </div>
     <div class="pub-item" data-cat="parasitic">
       <div class="pub-num">8</div>
       <div class="pub-body">
-        <div class="pub-title">RL-Fill: Timing-Aware Fill Insertion Using Reinforcement Learning</div>
-        <div class="pub-authors">J. Cho, S. Park, <strong>J. Lee</strong>, S.-Y. Lee, J. Ahn, S. Kang</div>
+        <div class="pub-title"><a href="https://dl.acm.org/doi/10.1145/3676536.3676795" target="_blank">RL-Fill: Timing-Aware Fill Insertion Using Reinforcement Learning</a></div>
+        <div class="pub-authors">Jinoh Cho, Seonghyeon Park, <strong>Jakang Lee</strong>, Sung-Yun Lee, Jinmo Ahn, Seokhyeong Kang</div>
         <div class="pub-venue">ICCAD 2024</div>
       </div>
     </div>
     <div class="pub-item" data-cat="ml">
       <div class="pub-num">9</div>
       <div class="pub-body">
-        <div class="pub-title">TA3D: Timing-Aware 3D IC Partitioning and Placement by Optimizing the Critical Path</div>
-        <div class="pub-authors">D. Kim, M. Kim, J. Hur, <strong>J. Lee</strong>, J. Cho, S. Kang</div>
+        <div class="pub-title"><a href="https://dl.acm.org/doi/10.1145/3670474.3685957" target="_blank">TA3D: Timing-Aware 3D IC Partitioning and Placement by Optimizing the Critical Path</a></div>
+        <div class="pub-authors">Donggyu Kim, Minjae Kim, Junseok Hur, <strong>Jakang Lee</strong>, Jinoh Cho, Seokhyeong Kang</div>
         <div class="pub-venue">MLCAD 2024</div>
       </div>
     </div>
     <div class="pub-item" data-cat="dtco">
       <div class="pub-num">10</div>
       <div class="pub-body">
-        <div class="pub-title">Multi-Source Transfer Learning for Design Technology Co-Optimization</div>
-        <div class="pub-authors"><strong>J. Lee</strong>, J. Lee, S. Park, S. Kang</div>
+        <div class="pub-title"><a href="https://ieeexplore.ieee.org/document/10244484/" target="_blank">Multi-Source Transfer Learning for Design Technology Co-Optimization</a></div>
+        <div class="pub-authors"><strong>Jakang Lee</strong>, Jaeseung Lee, Seonghyeon Park, Seokhyeong Kang</div>
         <div class="pub-venue">ISLPED 2023</div>
       </div>
     </div>
     <div class="pub-item" data-cat="parasitic">
       <div class="pub-num">11</div>
       <div class="pub-body">
-        <div class="pub-title">Advanced Parasitic Capacitance Extraction using Active Learning<span class="pub-award-badge">Best Poster Award</span></div>
-        <div class="pub-authors">D. Kim, <strong>J. Lee</strong>, S. Kang</div>
+        <div class="pub-title"><a href="https://ieeexplore.ieee.org/document/10396354/" target="_blank">Advanced Parasitic Capacitance Extraction using Active Learning</a><span class="pub-award-badge">Best Poster Award</span></div>
+        <div class="pub-authors">Donggyu Kim, <strong>Jakang Lee</strong>, Seokhyeong Kang</div>
         <div class="pub-venue">ISOCC 2023</div>
       </div>
     </div>
     <div class="pub-item" data-cat="ml">
       <div class="pub-num">12</div>
       <div class="pub-body">
-        <div class="pub-title">Routability Prediction using Deep Hierarchical Classification and Regression</div>
-        <div class="pub-authors">D. Kim, <strong>J. Lee</strong>, S. Kang</div>
+        <div class="pub-title"><a href="https://ieeexplore.ieee.org/document/10136974/" target="_blank">Routability Prediction using Deep Hierarchical Classification and Regression</a></div>
+        <div class="pub-authors">Daeyeon Kim, <strong>Jakang Lee</strong>, Seokhyeong Kang</div>
         <div class="pub-venue">DATE 2023</div>
       </div>
     </div>
 
     <div class="section-heading" style="margin-top:2.5rem">Patents</div>
     <div>
-      <div class="patent-item">
-        <span class="patent-id">KR20250136086A</span>
-        S. Kang, D. Kim, and <strong>J. Lee</strong>, "Apparatus and method for routability prediction using hierarchical classification and regression model, transfer learning method," Republic of Korea. <span class="patent-status">(Pending)</span>
+      <div class="pub-item">
+        <div class="pub-num">P1</div>
+        <div class="pub-body">
+          <div class="pub-title"><a href="https://patents.google.com/patent/KR20250136086A" target="_blank">Apparatus and method for routability prediction using hierarchical classification and regression model, transfer learning method</a></div>
+          <div class="pub-authors">Seokhyeong Kang, Daeyeon Kim, <strong>Jakang Lee</strong></div>
+          <div class="pub-venue">KR20250136086A · Republic of Korea · <span style="font-style:italic;color:var(--muted)">Pending</span></div>
+        </div>
       </div>
-      <div class="patent-item">
-        <span class="patent-id">KR20250165871A</span>
-        S. Kang, <strong>J. Lee</strong>, J. Lee, and S. Park, "Integrated circuit design system performing DTCO," Republic of Korea. <span class="patent-status">(Pending)</span>
+      <div class="pub-item">
+        <div class="pub-num">P2</div>
+        <div class="pub-body">
+          <div class="pub-title"><a href="https://patents.google.com/patent/KR20250165871A" target="_blank">Integrated circuit design system performing DTCO</a></div>
+          <div class="pub-authors">Seokhyeong Kang, <strong>Jakang Lee</strong>, Jaeseung Lee, Seonghyeon Park</div>
+          <div class="pub-venue">KR20250165871A · Republic of Korea · <span style="font-style:italic;color:var(--muted)">Pending</span></div>
+        </div>
       </div>
-      <div class="patent-item">
-        <span class="patent-id">US20250356087A1</span>
-        S. Kang, <strong>J. Lee</strong>, J. Lee, and S. Park, "Integrated circuit design system for performing DTCO (design technology co-optimization)," United States. <span class="patent-status">(Pending)</span>
+      <div class="pub-item" style="border-bottom:none;padding-bottom:0">
+        <div class="pub-num">P3</div>
+        <div class="pub-body">
+          <div class="pub-title"><a href="https://patents.google.com/patent/US20250356087A1" target="_blank">Integrated circuit design system for performing DTCO (design technology co-optimization)</a></div>
+          <div class="pub-authors">Seokhyeong Kang, <strong>Jakang Lee</strong>, Jaeseung Lee, Seonghyeon Park</div>
+          <div class="pub-venue">US20250356087A1 · United States · <span style="font-style:italic;color:var(--muted)">Pending</span></div>
+        </div>
       </div>
     </div>
   </div>
