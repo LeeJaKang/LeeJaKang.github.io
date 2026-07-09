@@ -4,31 +4,27 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Jakang Lee</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
       --sidebar-w: 300px;
-      --accent: #2563eb;
-      --text: #111827;
-      --sub: #374151;
-      --muted: #6b7280;
-      --border: #e5e7eb;
+      --accent: #333333;
+      --text: #1a1a1a;
+      --sub: #333333;
+      --muted: #666666;
+      --border: #d4d4d4;
       --bg: #ffffff;
-      --sidebar-bg: #f9fafb;
+      --sidebar-bg: #f7f7f7;
     }
 
     html, body {
       height: 100%;
-      font-family: 'Inter', system-ui, sans-serif;
-      font-size: 18px;
-      line-height: 1.7;
+      font-family: Georgia, 'Times New Roman', Times, serif;
+      font-size: 17px;
+      line-height: 1.65;
       color: var(--text);
       background: var(--bg);
-      -webkit-font-smoothing: antialiased;
     }
 
     /* ══════════════════════════════
@@ -48,17 +44,19 @@
     }
 
     .sidebar-photo {
-      width: 150px;
-      height: 150px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, #2563eb, #1e40af);
+      width: 130px;
+      height: 130px;
+      border-radius: 0;
+      border: 1px solid var(--border);
+      background: #ececec;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 2.8rem;
+      font-family: inherit;
+      font-size: 2.3rem;
       font-weight: 700;
-      color: #fff;
-      letter-spacing: -1px;
+      color: var(--text);
+      letter-spacing: 0.02em;
       margin-bottom: 1.2rem;
       overflow: hidden;
       flex-shrink: 0;
@@ -66,17 +64,19 @@
     .sidebar-photo img { width: 100%; height: 100%; object-fit: cover; }
 
     .sidebar-name {
-      font-size: 1.25rem;
+      font-family: inherit;
+      font-size: 1.3rem;
       font-weight: 700;
       color: var(--text);
-      letter-spacing: -0.02em;
+      letter-spacing: 0;
       line-height: 1.2;
       margin-bottom: 0.35rem;
     }
     .sidebar-role {
       font-size: 0.92rem;
-      color: var(--accent);
+      color: var(--sub);
       font-weight: 600;
+      font-style: normal;
       line-height: 1.4;
       margin-bottom: 0.2rem;
     }
@@ -124,21 +124,24 @@
     .nav-item {
       display: block;
       padding: 0.55rem 0.85rem;
-      border-radius: 6px;
+      border-radius: 0;
       font-size: 0.95rem;
       font-weight: 500;
+      letter-spacing: 0.02em;
       color: var(--muted);
       cursor: pointer;
       background: none;
       border: none;
+      border-left: 3px solid transparent;
       font-family: inherit;
       text-align: left;
       width: 100%;
-      transition: background 0.12s, color 0.12s;
+      transition: border-color 0.12s, color 0.12s;
     }
-    .nav-item:hover { background: #f0f0f0; color: var(--text); }
+    .nav-item:hover { border-left-color: var(--border); color: var(--text); }
     .nav-item.active {
-      background: #eff6ff;
+      background: none;
+      border-left-color: var(--accent);
       color: var(--accent);
       font-weight: 600;
     }
@@ -153,7 +156,7 @@
 
     .page {
       display: none;
-      max-width: 760px;
+      max-width: 980px;
       padding: 3.5rem 4rem 6rem;
       animation: fadeIn 0.18s ease;
     }
@@ -167,9 +170,10 @@
        TYPOGRAPHY HELPERS
     ══════════════════════════════ */
     .page-title {
-      font-size: 1.9rem;
+      font-family: inherit;
+      font-size: 1.85rem;
       font-weight: 700;
-      letter-spacing: -0.03em;
+      letter-spacing: 0;
       color: var(--text);
       margin-bottom: 2rem;
       padding-bottom: 0.75rem;
@@ -177,8 +181,10 @@
     }
 
     .section-heading {
+      font-family: inherit;
       font-size: 0.8rem;
       font-weight: 700;
+      font-style: normal;
       text-transform: uppercase;
       letter-spacing: 0.1em;
       color: var(--muted);
@@ -202,9 +208,10 @@
     }
     .interest-tag {
       border: 1px solid var(--border);
-      border-radius: 5px;
+      border-radius: 0;
       padding: 0.35rem 0.85rem;
       font-size: 0.9rem;
+      font-style: normal;
       color: var(--sub);
     }
 
@@ -235,9 +242,10 @@
     .honor-tag {
       font-size: 0.83rem;
       font-weight: 600;
-      color: var(--accent);
-      background: #eff6ff;
-      border-radius: 4px;
+      color: var(--sub);
+      background: none;
+      border: 1px solid var(--border);
+      border-radius: 0;
       padding: 0.2rem 0.6rem;
     }
 
@@ -291,20 +299,21 @@
     .pub-filter button {
       border: 1px solid var(--border);
       background: none;
-      border-radius: 5px;
+      border-radius: 0;
       padding: 0.38rem 1rem;
       font-size: 0.9rem;
       font-weight: 500;
+      font-style: normal;
       cursor: pointer;
       color: var(--muted);
       font-family: inherit;
       transition: all 0.12s;
     }
-    .pub-filter button:hover { color: var(--text); border-color: #9ca3af; }
+    .pub-filter button:hover { color: var(--text); border-color: var(--muted); }
     .pub-filter button.active {
       background: var(--text);
       border-color: var(--text);
-      color: #fff;
+      color: var(--bg);
       font-weight: 600;
     }
 
@@ -344,12 +353,14 @@
     }
     .pub-award-badge {
       display: inline-block;
-      background: #fef9c3;
-      color: #854d0e;
-      border-radius: 3px;
+      background: none;
+      border: 1px solid var(--muted);
+      color: var(--sub);
+      border-radius: 0;
       padding: 0.08rem 0.45rem;
       font-size: 0.78rem;
       font-weight: 700;
+      font-style: normal;
       margin-left: 0.35rem;
       vertical-align: middle;
     }
@@ -415,14 +426,16 @@
       margin-bottom: 0.2rem;
     }
     .oss-name { font-weight: 600; font-size: 1.05rem; }
-    .oss-name a { color: var(--accent); text-decoration: none; }
-    .oss-name a:hover { text-decoration: underline; }
+    .oss-name a { color: var(--text); text-decoration: underline; }
+    .oss-name a:hover { color: var(--accent); }
     .oss-badge {
       font-size: 0.83rem;
       font-weight: 600;
-      color: #92400e;
-      background: #fef3c7;
-      border-radius: 4px;
+      font-style: normal;
+      color: var(--sub);
+      background: none;
+      border: 1px solid var(--muted);
+      border-radius: 0;
       padding: 0.12rem 0.5rem;
     }
     .oss-org { font-size: 0.9rem; color: var(--muted); margin-bottom: 0.4rem; }
@@ -435,7 +448,7 @@
       padding: 0 4rem 3rem;
       font-size: 0.88rem;
       color: var(--muted);
-      max-width: 760px;
+      max-width: 980px;
     }
 
     /* ══════════════════════════════
@@ -519,7 +532,7 @@
   <div class="page" id="page-about">
     <div class="page-title">About</div>
 
-    <p class="about-bio">I am a Ph.D. student in Electrical and Computer Engineering at UC San Diego, working in the <a href="https://abkgroup.ucsd.edu" target="_blank" style="color:var(--accent);text-decoration:none;">ABKGroup</a> under the supervision of Prof. Andrew B. Kahng. My primary research focuses on automatic standard cell layout generation and design technology co-optimization (DTCO). I also explore the application of machine learning to broader EDA problems, aiming to advance intelligent automation in next-generation semiconductor design.</p>
+    <p class="about-bio">I am a Ph.D. student in Electrical and Computer Engineering at UC San Diego, working in the <a href="https://abkgroup.ucsd.edu" target="_blank" style="color:var(--text);text-decoration:underline;">ABKGroup</a> under the supervision of Prof. Andrew B. Kahng. My primary research focuses on automatic standard cell layout generation and design technology co-optimization (DTCO). I also explore the application of machine learning to broader EDA problems, aiming to advance intelligent automation in next-generation semiconductor design.</p>
 
     <div class="section-heading">Research Interests</div>
     <div class="interest-list">
