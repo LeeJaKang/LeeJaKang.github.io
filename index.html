@@ -47,6 +47,7 @@
       font-size: 1.15rem;
       font-weight: 700;
       color: var(--text);
+      cursor: pointer;
     }
     .topnav-links {
       display: flex;
@@ -514,7 +515,7 @@
      TOP NAV
 ══════════════════════════════ -->
 <header class="topnav">
-  <div class="topnav-brand">Jakang Lee</div>
+  <div class="topnav-brand" onclick="showTab('about')">Jakang Lee</div>
   <nav class="topnav-links">
     <button class="nav-item" data-tab="about"  onclick="showTab('about')">About</button>
     <button class="nav-item" data-tab="pubs"   onclick="showTab('pubs')">Publications</button>
