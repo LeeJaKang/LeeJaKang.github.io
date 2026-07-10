@@ -165,12 +165,6 @@
       gap: 3.5rem;
     }
 
-    .info-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0 3rem;
-    }
-
     /* ══════════════════════════════
        TYPOGRAPHY HELPERS
     ══════════════════════════════ */
@@ -516,7 +510,6 @@
       .topnav { padding: 1rem 1.5rem; }
       .about-grid { grid-template-columns: 1fr; gap: 2rem; }
       .profile-photo { width: 80px; height: 80px; font-size: 1.6rem; }
-      .info-grid { grid-template-columns: 1fr; gap: 2rem; }
       .page { padding: 2rem 1.5rem 4rem; }
       .footer { padding: 0 1.5rem 2rem; }
     }
@@ -534,6 +527,7 @@
     <button class="nav-item" data-tab="pubs"   onclick="showTab('pubs')">Publications</button>
     <button class="nav-item" data-tab="exp"    onclick="showTab('exp')">Experience</button>
     <button class="nav-item" data-tab="oss"    onclick="showTab('oss')">Open Source</button>
+    <button class="nav-item" data-tab="awards" onclick="showTab('awards')">Awards</button>
   </nav>
 </header>
 
@@ -589,8 +583,6 @@
       <span class="interest-tag">Physical Design Automation</span>
     </div>
 
-    <div class="info-grid">
-    <div class="info-col">
     <div class="section-heading">Education</div>
     <div>
       <div class="edu-item">
@@ -638,10 +630,14 @@
         </div>
       </div>
     </div>
-    </div>
 
-    <div class="info-col">
-    <div class="section-heading">Awards &amp; Honors</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- AWARDS -->
+  <div class="page" id="page-awards">
+    <div class="page-title">Awards &amp; Honors</div>
     <div>
       <div class="award-item">
         <div class="award-year">2026</div>
@@ -656,11 +652,6 @@
           <div class="award-title">Best Poster Award — ISOCC 2023</div>
           <div class="award-body">"Advanced Parasitic Capacitance Extraction using Active Learning," Jeju, Korea</div>
         </div>
-      </div>
-    </div>
-    </div>
-    </div>
-
       </div>
     </div>
   </div>
@@ -1034,7 +1025,7 @@
 
   (function () {
     const hash = location.hash.replace('#', '') || 'about';
-    const valid = ['about', 'pubs', 'exp', 'oss'];
+    const valid = ['about', 'pubs', 'exp', 'oss', 'awards'];
     showTab(valid.includes(hash) ? hash : 'about');
   })();
 </script>
