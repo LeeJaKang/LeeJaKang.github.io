@@ -393,6 +393,21 @@
       align-items: center;
       gap: 0.4rem;
     }
+    .pub-date {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-top: 0.15rem;
+    }
+    .pub-link {
+      font-size: 0.9rem;
+      font-weight: 500;
+      font-style: normal;
+      color: var(--sub);
+      text-decoration: underline;
+      margin-left: 0.4rem;
+      white-space: nowrap;
+    }
+    .pub-link:hover { color: var(--accent); }
     .venue-logo {
       height: 28px;
       width: auto;
@@ -438,7 +453,8 @@
     }
     .exp-period { font-size: 0.88rem; color: var(--muted); white-space: nowrap; }
     .exp-role { font-size: 0.97rem; color: var(--accent); font-weight: 500; margin-top: 0.12rem; }
-    .exp-loc { font-size: 0.88rem; color: var(--muted); margin-top: 0.05rem; }
+    .exp-loc { font-size: 0.88rem; color: var(--muted); margin-top: 0.05rem; display: flex; align-items: center; gap: 0.4rem; flex-wrap: wrap; }
+    .exp-loc-logo { height: 18px; width: auto; max-width: 70px; object-fit: contain; flex-shrink: 0; }
     .exp-desc {
       margin-top: 0.55rem;
       padding-left: 1.1rem;
@@ -466,8 +482,9 @@
       margin-bottom: 0.2rem;
     }
     .oss-name { font-weight: 600; font-size: 1.05rem; }
-    .oss-name a { color: var(--text); text-decoration: underline; }
+    .oss-name a { color: var(--text); text-decoration: underline; display: inline-flex; align-items: center; gap: 0.4rem; }
     .oss-name a:hover { color: var(--accent); }
+    .oss-icon { width: 17px; height: 17px; flex-shrink: 0; opacity: 0.7; }
     .oss-badge {
       font-size: 0.83rem;
       font-weight: 600;
@@ -659,108 +676,121 @@
       <button onclick="filterPubs('ml',this)">AI-Driven EDA</button>
     </div>
 
-    <div class="pub-item" data-cat="dtco">
+    <div class="pub-item" data-cat="parasitic">
       <div class="pub-num">1</div>
+      <div class="pub-body">
+        <div class="pub-title">Differentiable Fill Insertion with Explicit Delay Optimization<a class="pub-link" href="https://doi.org/10.1145/3770743.3804006" target="_blank">[link]</a></div>
+        <div class="pub-authors">Jinoh Cho, Jinmo Ahn, <strong>Jakang Lee</strong>, Jaeseung Lee, Seonghyeon Park, Seokhyeong Kang</div>
+        <div class="pub-venue"><img class="venue-logo" src="assets/logos/dac.png" alt="">DAC 2026 (to appear)</div>
+        <div class="pub-date">Jul 26–29, 2026 · Long Beach, CA, USA</div>
+      </div>
+    </div>
+    <div class="pub-item" data-cat="ml">
+      <div class="pub-num">2</div>
+      <div class="pub-body">
+        <div class="pub-title">Automated QoR improvement in OpenROAD with coding agents<a class="pub-link" href="https://arxiv.org/abs/2601.06268" target="_blank">[link]</a></div>
+        <div class="pub-authors">Amur Ghose, Junyeong Jang, Andrew B. Kahng, <strong>Jakang Lee</strong></div>
+        <div class="pub-venue">arXiv:2601.06268</div>
+        <div class="pub-date">Preprint · Feb 9, 2026</div>
+      </div>
+    </div>
+    <div class="pub-item" data-cat="dtco">
+      <div class="pub-num">3</div>
       <div class="pub-body">
         <div class="pub-title">Au-MEDAL: Adaptable Grid Router with Metal Edge Detection and Layer Integration<span class="pub-award-badge">Best Paper Nominee</span></div>
         <div class="pub-authors">Andrew B. Kahng, Seokhyeong Kang, Sehyeon Kim, <strong>Jakang Lee</strong>, Dooseok Yoon</div>
         <div class="pub-venue"><img class="venue-logo" src="assets/logos/aspdac.png" alt="">ASP-DAC 2026</div>
-      </div>
-    </div>
-    <div class="pub-item" data-cat="parasitic">
-      <div class="pub-num">2</div>
-      <div class="pub-body">
-        <div class="pub-title">Differentiable Fill Insertion with Explicit Delay Optimization</div>
-        <div class="pub-authors">Jinoh Cho, Jinmo Ahn, <strong>Jakang Lee</strong>, Jaeseung Lee, Seonghyeon Park, Seokhyeong Kang</div>
-        <div class="pub-venue"><img class="venue-logo" src="assets/logos/dac.png" alt="">DAC 2026 (to appear)</div>
-      </div>
-    </div>
-    <div class="pub-item" data-cat="ml">
-      <div class="pub-num">3</div>
-      <div class="pub-body">
-        <div class="pub-title">A Heterogeneous Graph-based Gate Sizer Integrating Graph Attention Network and Transformer</div>
-        <div class="pub-authors">Jinmo Ahn, Jinoh Cho, Jaemin Seo, Jaeseung Lee, <strong>Jakang Lee</strong>, Seokhyeong Kang</div>
-        <div class="pub-venue"><img class="venue-logo" src="assets/logos/aspdac.png" alt="">ASP-DAC 2026</div>
+        <div class="pub-date">Jan 19–22, 2026 · Hong Kong</div>
       </div>
     </div>
     <div class="pub-item" data-cat="ml">
       <div class="pub-num">4</div>
       <div class="pub-body">
-        <div class="pub-title"><a href="https://arxiv.org/abs/2601.06268" target="_blank">Automated QoR improvement in OpenROAD with coding agents</a></div>
-        <div class="pub-authors">Amur Ghose, Junyeong Jang, Andrew B. Kahng, <strong>Jakang Lee</strong></div>
-        <div class="pub-venue">arXiv:2601.06268</div>
+        <div class="pub-title">A Heterogeneous Graph-based Gate Sizer Integrating Graph Attention Network and Transformer</div>
+        <div class="pub-authors">Jinmo Ahn, Jinoh Cho, Jaemin Seo, Jaeseung Lee, <strong>Jakang Lee</strong>, Seokhyeong Kang</div>
+        <div class="pub-venue"><img class="venue-logo" src="assets/logos/aspdac.png" alt="">ASP-DAC 2026</div>
+        <div class="pub-date">Jan 19–22, 2026 · Hong Kong</div>
       </div>
     </div>
     <div class="pub-item" data-cat="dtco">
       <div class="pub-num">5</div>
       <div class="pub-body">
-        <div class="pub-title"><a href="https://ieeexplore.ieee.org/document/11240677/" target="_blank">SO3-Cell: Standard Cell Layout Synthesis Framework for Simultaneous Optimization of Topology, Placement, and Routing</a></div>
+        <div class="pub-title">SO3-Cell: Standard Cell Layout Synthesis Framework for Simultaneous Optimization of Topology, Placement, and Routing<a class="pub-link" href="https://ieeexplore.ieee.org/document/11240677/" target="_blank">[link]</a></div>
         <div class="pub-authors">Chung-Kuan Cheng, Andrew B. Kahng, Byeonggon Kang, Seokhyeong Kang, <strong>Jakang Lee</strong>, Bill Lin</div>
         <div class="pub-venue"><img class="venue-logo" src="assets/logos/iccad2025.png" alt="">ICCAD 2025</div>
+        <div class="pub-date">Oct 26–30, 2025 · Munich, Germany</div>
       </div>
     </div>
     <div class="pub-item" data-cat="dtco">
       <div class="pub-num">6</div>
       <div class="pub-body">
-        <div class="pub-title"><a href="https://dl.acm.org/doi/10.1145/3658617.3697602" target="_blank">LIBMixer: An all-MLP Architecture for Cell Library Characterization towards Design Space Optimization</a></div>
+        <div class="pub-title">LIBMixer: An all-MLP Architecture for Cell Library Characterization towards Design Space Optimization<a class="pub-link" href="https://dl.acm.org/doi/10.1145/3658617.3697602" target="_blank">[link]</a></div>
         <div class="pub-authors">Jaeseung Lee, Sunggyu Jang, <strong>Jakang Lee</strong>, Seokhyeong Kang</div>
         <div class="pub-venue"><img class="venue-logo" src="assets/logos/aspdac.png" alt="">ASP-DAC 2025</div>
+        <div class="pub-date">Jan 20–23, 2025 · Tokyo, Japan</div>
       </div>
     </div>
     <div class="pub-item" data-cat="parasitic">
       <div class="pub-num">7</div>
       <div class="pub-body">
-        <div class="pub-title"><a href="https://dl.acm.org/doi/10.1145/3658617.3697599" target="_blank">ParaFormer: A Hybrid Graph Neural Network and Transformer Approach for Pre-Routing Parasitic RC Prediction</a></div>
+        <div class="pub-title">ParaFormer: A Hybrid Graph Neural Network and Transformer Approach for Pre-Routing Parasitic RC Prediction<a class="pub-link" href="https://dl.acm.org/doi/10.1145/3658617.3697599" target="_blank">[link]</a></div>
         <div class="pub-authors">Jongho Yoon, <strong>Jakang Lee</strong>, Donggyu Kim, Junseok Hur, Seokhyeong Kang</div>
         <div class="pub-venue"><img class="venue-logo" src="assets/logos/aspdac.png" alt="">ASP-DAC 2025</div>
+        <div class="pub-date">Jan 20–23, 2025 · Tokyo, Japan</div>
       </div>
     </div>
     <div class="pub-item" data-cat="parasitic">
       <div class="pub-num">8</div>
       <div class="pub-body">
-        <div class="pub-title"><a href="https://dl.acm.org/doi/10.1145/3676536.3676795" target="_blank">RL-Fill: Timing-Aware Fill Insertion Using Reinforcement Learning</a></div>
+        <div class="pub-title">RL-Fill: Timing-Aware Fill Insertion Using Reinforcement Learning<a class="pub-link" href="https://dl.acm.org/doi/10.1145/3676536.3676795" target="_blank">[link]</a></div>
         <div class="pub-authors">Jinoh Cho, Seonghyeon Park, <strong>Jakang Lee</strong>, Sung-Yun Lee, Jinmo Ahn, Seokhyeong Kang</div>
         <div class="pub-venue"><img class="venue-logo" src="assets/logos/iccad2024.png" alt="">ICCAD 2024</div>
+        <div class="pub-date">Oct 27–31, 2024 · New York, NY, USA</div>
       </div>
     </div>
     <div class="pub-item" data-cat="ml">
       <div class="pub-num">9</div>
       <div class="pub-body">
-        <div class="pub-title"><a href="https://dl.acm.org/doi/10.1145/3670474.3685957" target="_blank">TA3D: Timing-Aware 3D IC Partitioning and Placement by Optimizing the Critical Path</a></div>
+        <div class="pub-title">TA3D: Timing-Aware 3D IC Partitioning and Placement by Optimizing the Critical Path<a class="pub-link" href="https://dl.acm.org/doi/10.1145/3670474.3685957" target="_blank">[link]</a></div>
         <div class="pub-authors">Donggyu Kim, Minjae Kim, Junseok Hur, <strong>Jakang Lee</strong>, Jinoh Cho, Seokhyeong Kang</div>
         <div class="pub-venue"><img class="venue-logo" src="assets/logos/mlcad.png" alt="">MLCAD 2024</div>
-      </div>
-    </div>
-    <div class="pub-item" data-cat="dtco">
-      <div class="pub-num">10</div>
-      <div class="pub-body">
-        <div class="pub-title"><a href="https://ieeexplore.ieee.org/document/10244484/" target="_blank">Multi-Source Transfer Learning for Design Technology Co-Optimization</a></div>
-        <div class="pub-authors"><strong>Jakang Lee</strong>, Jaeseung Lee, Seonghyeon Park, Seokhyeong Kang</div>
-        <div class="pub-venue"><img class="venue-logo" src="assets/logos/islped.png" alt="">ISLPED 2023</div>
+        <div class="pub-date">Sep 9–11, 2024 · Salt Lake City, UT, USA</div>
       </div>
     </div>
     <div class="pub-item" data-cat="parasitic">
-      <div class="pub-num">11</div>
+      <div class="pub-num">10</div>
       <div class="pub-body">
-        <div class="pub-title"><a href="https://ieeexplore.ieee.org/document/10396354/" target="_blank">Advanced Parasitic Capacitance Extraction using Active Learning</a><span class="pub-award-badge">Best Poster Award</span></div>
+        <div class="pub-title">Advanced Parasitic Capacitance Extraction using Active Learning<span class="pub-award-badge">Best Poster Award</span><a class="pub-link" href="https://ieeexplore.ieee.org/document/10396354/" target="_blank">[link]</a></div>
         <div class="pub-authors">Donggyu Kim, <strong>Jakang Lee</strong>, Seokhyeong Kang</div>
         <div class="pub-venue"><img class="venue-logo" src="assets/logos/isocc2023.png" alt="">ISOCC 2023</div>
+        <div class="pub-date">Oct 25–28, 2023 · Jeju, Korea</div>
+      </div>
+    </div>
+    <div class="pub-item" data-cat="dtco">
+      <div class="pub-num">11</div>
+      <div class="pub-body">
+        <div class="pub-title">Multi-Source Transfer Learning for Design Technology Co-Optimization<a class="pub-link" href="https://ieeexplore.ieee.org/document/10244484/" target="_blank">[link]</a></div>
+        <div class="pub-authors"><strong>Jakang Lee</strong>, Jaeseung Lee, Seonghyeon Park, Seokhyeong Kang</div>
+        <div class="pub-venue"><img class="venue-logo" src="assets/logos/islped.png" alt="">ISLPED 2023</div>
+        <div class="pub-date">Aug 7–8, 2023 · Vienna, Austria</div>
       </div>
     </div>
     <div class="pub-item" data-cat="ml">
       <div class="pub-num">12</div>
       <div class="pub-body">
-        <div class="pub-title"><a href="https://ieeexplore.ieee.org/document/10136974/" target="_blank">Routability Prediction using Deep Hierarchical Classification and Regression</a></div>
+        <div class="pub-title">Routability Prediction using Deep Hierarchical Classification and Regression<a class="pub-link" href="https://ieeexplore.ieee.org/document/10136974/" target="_blank">[link]</a></div>
         <div class="pub-authors">Daeyeon Kim, <strong>Jakang Lee</strong>, Seokhyeong Kang</div>
         <div class="pub-venue"><span class="venue-logo-date"><img src="assets/logos/date2023.png" alt=""></span>DATE 2023</div>
+        <div class="pub-date">Apr 17–19, 2023 · Antwerp, Belgium</div>
       </div>
     </div>
     <div class="pub-item">
       <div class="pub-num">13</div>
       <div class="pub-body">
-        <div class="pub-title"><a href="https://doi.org/10.1109/ISOCC53507.2021.9614030" target="_blank">Giga-sample Data Acquisition Method for High-speed DDR5 SDRAM</a></div>
+        <div class="pub-title">Giga-sample Data Acquisition Method for High-speed DDR5 SDRAM<a class="pub-link" href="https://doi.org/10.1109/ISOCC53507.2021.9614030" target="_blank">[link]</a></div>
         <div class="pub-authors">Seunggyu Lee, Jongho Yoon, <strong>Jakang Lee</strong>, Seokhyeong Kang</div>
         <div class="pub-venue"><img class="venue-logo" src="assets/logos/isocc2021.png" alt="">ISOCC 2021</div>
+        <div class="pub-date">Oct 6–9, 2021 · Jeju, Korea</div>
       </div>
     </div>
 
@@ -884,7 +914,7 @@
           <span class="exp-org">Development of Giga-sampling-based Data Acquisition Techniques (2nd year)</span>
           <span class="exp-period">Jan 2023 – Jun 2023</span>
         </div>
-        <div class="exp-loc">SK Hynix, POSTECH, et al. · Pohang, Korea</div>
+        <div class="exp-loc"><img class="exp-loc-logo" src="assets/logos/skhynix.png" alt="">SK Hynix, POSTECH, et al. · Pohang, Korea</div>
         <ul class="exp-desc">
           <li>FPGA programming, system-based RISC-V integration and debugging</li>
         </ul>
@@ -894,7 +924,7 @@
           <span class="exp-org">Research on Semiconductor Design Automation based on Deep Learning</span>
           <span class="exp-period">Mar 2022 – Jun 2022</span>
         </div>
-        <div class="exp-loc">POSCO, POSTECH, et al. · Pohang, Korea</div>
+        <div class="exp-loc"><img class="exp-loc-logo" src="assets/logos/posco.png" alt="">POSCO, POSTECH, et al. · Pohang, Korea</div>
         <ul class="exp-desc">
           <li>Machine learning, routability prediction, feature extraction, OpenROAD, OpenDB</li>
         </ul>
@@ -904,7 +934,7 @@
           <span class="exp-org">Development of Giga-sampling-based Data Acquisition Techniques (1st year)</span>
           <span class="exp-period">Apr 2021 – Feb 2022</span>
         </div>
-        <div class="exp-loc">SK Hynix, POSTECH, et al. · Pohang, Korea</div>
+        <div class="exp-loc"><img class="exp-loc-logo" src="assets/logos/skhynix.png" alt="">SK Hynix, POSTECH, et al. · Pohang, Korea</div>
         <ul class="exp-desc">
           <li>FPGA programming, RISC-V integration and debugging, PS-PL communication</li>
         </ul>
@@ -914,7 +944,7 @@
           <span class="exp-org">Autonomous Quad-copter Design and Development</span>
           <span class="exp-period">Jan 2018 – Dec 2018</span>
         </div>
-        <div class="exp-loc">Nerki Club, Dept. of Avionics Engineering, Hanseo University · Taean, Korea</div>
+        <div class="exp-loc"><img class="exp-loc-logo" src="assets/logos/hanseo.png" alt="">Nerki Club, Dept. of Avionics Engineering, Hanseo University · Taean, Korea</div>
         <ul class="exp-desc">
           <li>Sensor fusion (accelerometer and gyroscope), GPS coordinate parsing</li>
           <li>GUI creation for map and coordinates using LabVIEW, PPM signal processing</li>
@@ -929,7 +959,15 @@
     <div>
       <div class="oss-item">
         <div class="oss-row">
-          <span class="oss-name"><a href="https://github.com/ABKGroup/NanGate45-Synopsys-Enablement" target="_blank">NanGate45-Synopsys-Enablement</a></span>
+          <span class="oss-name"><a href="https://hub.docker.com/r/abkgroupucsd/audopeda" target="_blank"><svg class="oss-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M13.983 11.078h2.119a.186.186 0 00.186-.185V9.006a.186.186 0 00-.186-.186h-2.119a.185.185 0 00-.185.185v1.888c0 .102.083.185.185.185m-2.954-5.43h2.118a.186.186 0 00.186-.186V3.574a.186.186 0 00-.186-.185h-2.118a.185.185 0 00-.185.185v1.888c0 .102.082.185.185.185m0 2.716h2.118a.187.187 0 00.186-.186V6.29a.186.186 0 00-.186-.185h-2.118a.185.185 0 00-.185.185v1.887c0 .102.082.185.185.186m-2.93 0h2.12a.186.186 0 00.184-.186V6.29a.185.185 0 00-.185-.185H8.1a.185.185 0 00-.185.185v1.887c0 .102.083.185.185.186m-2.964 0h2.119a.186.186 0 00.185-.186V6.29a.185.185 0 00-.185-.185H5.136a.186.186 0 00-.186.185v1.887c0 .102.084.185.186.186m5.893 2.715h2.118a.186.186 0 00.186-.185V9.006a.186.186 0 00-.186-.186h-2.118a.185.185 0 00-.185.185v1.888c0 .102.082.185.185.185m-2.93 0h2.12a.185.185 0 00.184-.185V9.006a.185.185 0 00-.184-.186h-2.12a.185.185 0 00-.184.185v1.888c0 .102.083.185.185.185m-2.964 0h2.119a.185.185 0 00.185-.185V9.006a.185.185 0 00-.184-.186h-2.12a.186.186 0 00-.186.186v1.887c0 .102.084.185.186.185m-2.92 0h2.12a.185.185 0 00.184-.185V9.006a.185.185 0 00-.184-.186h-2.12a.185.185 0 00-.184.185v1.888c0 .102.082.185.185.185M23.763 9.89c-.065-.051-.672-.51-1.954-.51-.338.001-.676.03-1.01.087-.248-1.7-1.653-2.53-1.716-2.566l-.344-.199-.226.327c-.284.438-.49.922-.612 1.43-.23.97-.09 1.882.403 2.661-.595.332-1.55.413-1.744.42H.751a.751.751 0 00-.75.748 11.376 11.376 0 00.692 4.062c.545 1.428 1.355 2.48 2.41 3.124 1.18.723 3.1 1.137 5.275 1.137.983.003 1.963-.086 2.93-.266a12.248 12.248 0 003.823-1.389c.98-.567 1.86-1.288 2.61-2.136 1.252-1.418 1.998-2.997 2.553-4.4h.221c1.372 0 2.215-.549 2.68-1.009.309-.293.55-.65.707-1.046l.098-.288Z"/></svg>AuDoPEDA</a></span>
+          <span class="oss-badge">arXiv:2601.06268</span>
+        </div>
+        <div class="oss-org">ABKGroup · UC San Diego · 2026</div>
+        <div class="oss-desc">Autonomous, repository-grounded coding system that documents, plans, and patches OpenROAD with an LLM agent — achieving up to 5.9% wirelength, 10.0% clock period, and 19.4% power improvements with no human in the loop.</div>
+      </div>
+      <div class="oss-item">
+        <div class="oss-row">
+          <span class="oss-name"><a href="https://github.com/ABKGroup/NanGate45-Synopsys-Enablement" target="_blank"><svg class="oss-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>NanGate45-Synopsys-Enablement</a></span>
           <span class="oss-badge">★ 30+</span>
         </div>
         <div class="oss-org">ABKGroup · UC San Diego · 2025</div>
@@ -937,14 +975,14 @@
       </div>
       <div class="oss-item">
         <div class="oss-row">
-          <span class="oss-name"><a href="https://github.com/ABKGroup/ASAP7-Synopsys-Enablement" target="_blank">ASAP7-Synopsys-Enablement</a></span>
+          <span class="oss-name"><a href="https://github.com/ABKGroup/ASAP7-Synopsys-Enablement" target="_blank"><svg class="oss-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>ASAP7-Synopsys-Enablement</a></span>
         </div>
         <div class="oss-org">ABKGroup · UC San Diego · 2025–present</div>
         <div class="oss-desc">First-ever Synopsys-based post-route extraction and timing analysis for the ASAP7 7nm open-source PDK, including calibrated TLU+ and NXTGRD files.</div>
       </div>
       <div class="oss-item">
         <div class="oss-row">
-          <span class="oss-name"><a href="https://github.com/ABKGroup/Au-MEDAL" target="_blank">Au-MEDAL</a></span>
+          <span class="oss-name"><a href="https://github.com/ABKGroup/Au-MEDAL" target="_blank"><svg class="oss-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>Au-MEDAL</a></span>
           <span class="oss-badge">ASP-DAC 2026</span>
         </div>
         <div class="oss-org">ABKGroup · UC San Diego · 2025–present</div>
@@ -952,7 +990,7 @@
       </div>
       <div class="oss-item">
         <div class="oss-row">
-          <span class="oss-name"><a href="https://github.com/ckchengucsd/SO3-Cell" target="_blank">SO3-Cell</a></span>
+          <span class="oss-name"><a href="https://github.com/ckchengucsd/SO3-Cell" target="_blank"><svg class="oss-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>SO3-Cell</a></span>
           <span class="oss-badge">ICCAD 2025</span>
         </div>
         <div class="oss-org">UC San Diego · 2025</div>
@@ -960,7 +998,7 @@
       </div>
       <div class="oss-item">
         <div class="oss-row">
-          <span class="oss-name"><a href="https://github.com/The-OpenROAD-Project/OpenROAD-flow-scripts" target="_blank">OpenROAD ASAP7 Library Fixes</a></span>
+          <span class="oss-name"><a href="https://github.com/The-OpenROAD-Project/OpenROAD-flow-scripts" target="_blank"><svg class="oss-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>OpenROAD ASAP7 Library Fixes</a></span>
         </div>
         <div class="oss-org">The OpenROAD Project (DARPA-funded) · 2025–2026</div>
         <div class="oss-desc">Identified and corrected corner characterization errors in ASAP7 Liberty files; fully re-extracted MBFF timing libraries and contributed to OpenROAD-flow-scripts.</div>
