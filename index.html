@@ -524,6 +524,20 @@
       .page { padding: 2rem 1.5rem 4rem; }
       .footer { padding: 0 1.5rem 2rem; }
     }
+
+    /* ══════════════════════════════
+       VISIT COUNTER
+    ══════════════════════════════ */
+    #visit-counter {
+      position: fixed;
+      bottom: 10px;
+      left: 14px;
+      font-size: 0.75rem;
+      color: var(--muted);
+      opacity: 0.75;
+      z-index: 50;
+      font-family: Georgia, 'Times New Roman', Times, serif;
+    }
   </style>
 </head>
 <body>
@@ -1058,6 +1072,22 @@
     const hash = location.hash.replace('#', '') || 'about';
     const valid = ['about', 'pubs', 'exp', 'oss', 'awards'];
     showTab(valid.includes(hash) ? hash : 'about');
+  })();
+</script>
+
+<div id="visit-counter"></div>
+<script data-goatcounter="https://wkrkd95.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script>
+  (function () {
+    const base = 'https://wkrkd95.goatcounter.com/counter/';
+    const el = document.getElementById('visit-counter');
+    const today = new Date().toISOString().slice(0, 10);
+    Promise.all([
+      fetch(base + 'TOTAL.json').then(r => r.json()).catch(() => ({ count: '—' })),
+      fetch(base + 'TOTAL.json?start=' + today + '&end=' + today).then(r => r.json()).catch(() => ({ count: '—' })),
+    ]).then(([total, day]) => {
+      el.textContent = 'Today: ' + day.count + ' · Total: ' + total.count;
+    });
   })();
 </script>
 </body>
