@@ -1115,8 +1115,8 @@
     // next day to include all of "today" (otherwise only ~00:00-01:00 UTC counts).
     const tomorrow = new Date(Date.now() + 86400000).toISOString().slice(0, 10);
     Promise.all([
-      fetch(base + 'TOTAL.json').then(r => r.json()).catch(() => ({ count: '—' })),
-      fetch(base + 'TOTAL.json?start=' + today + '&end=' + tomorrow).then(r => r.json()).catch(() => ({ count: '—' })),
+      fetch(base + 'TOTAL.json', { cache: 'no-store' }).then(r => r.json()).catch(() => ({ count: '—' })),
+      fetch(base + 'TOTAL.json?start=' + today + '&end=' + tomorrow, { cache: 'no-store' }).then(r => r.json()).catch(() => ({ count: '—' })),
     ]).then(([total, day]) => {
       el.textContent = 'Today: ' + day.count + ' · Total: ' + total.count;
     });
