@@ -14,6 +14,7 @@
       --sub: #333333;
       --muted: #666666;
       --border: #d4d4d4;
+      --border-strong: #a8a8a8;
       --bg: #ffffff;
       --sidebar-bg: #f7f7f7;
     }
@@ -334,6 +335,12 @@
     .pub-item:first-child { padding-top: 0; }
     .pub-item:last-child { border-bottom: none; padding-bottom: 0; }
     .pub-item.hidden { display: none; }
+
+    .pub-item.year-end, .oss-item.year-end {
+      border-bottom-color: var(--border-strong);
+      padding-bottom: 2.2rem;
+    }
+    .pub-item.year-start, .oss-item.year-start { padding-top: 2.2rem; }
 
     .pub-num {
       flex-shrink: 0;
@@ -718,7 +725,7 @@
       <button onclick="filterPubs('ml',this)">AI-Driven EDA</button>
     </div>
 
-    <div class="pub-item" data-cat="dtco">
+    <div class="pub-item" data-year="2026" data-cat="dtco">
       <div class="pub-num">1</div>
       <div class="pub-body">
         <div class="pub-title">GAPMA: Graph-Attention Cell Usage Prediction with Polarity-Minimized NPN Aggregation for Design-Specific Cell Composition</div>
@@ -728,7 +735,7 @@
         <div class="pub-date">Sep 7–9, 2026 · Jeju, Korea</div>
       </div>
     </div>
-    <div class="pub-item" data-cat="ml">
+    <div class="pub-item" data-year="2026" data-cat="ml">
       <div class="pub-num">2</div>
       <div class="pub-body">
         <div class="pub-title">Automated QoR Improvement in OpenROAD with Coding Agents<a class="pub-link" href="https://hub.docker.com/r/abkgroupucsd/audopeda" target="_blank">[source]</a></div>
@@ -738,7 +745,7 @@
         <div class="pub-date">Nov 8–12, 2026 · San Jose, CA, USA</div>
       </div>
     </div>
-    <div class="pub-item" data-cat="parasitic">
+    <div class="pub-item" data-year="2026" data-cat="parasitic">
       <div class="pub-num">3</div>
       <div class="pub-body">
         <div class="pub-title">Differentiable Fill Insertion with Explicit Delay Optimization</div>
@@ -747,7 +754,7 @@
         <div class="pub-date">Jul 26–29, 2026 · Long Beach, CA, USA</div>
       </div>
     </div>
-    <div class="pub-item" data-cat="ml">
+    <div class="pub-item" data-year="2026" data-cat="ml">
       <div class="pub-num">4</div>
       <div class="pub-body">
         <div class="pub-title">Automated QoR improvement in OpenROAD with coding agents<a class="pub-link" href="https://arxiv.org/abs/2601.06268" target="_blank">[url]</a><a class="pub-link" href="https://arxiv.org/pdf/2601.06268" target="_blank">[pdf]</a><a class="pub-link" href="https://hub.docker.com/r/abkgroupucsd/audopeda" target="_blank">[source]</a></div>
@@ -757,7 +764,7 @@
         <div class="pub-date">Preprint · Feb 9, 2026</div>
       </div>
     </div>
-    <div class="pub-item" data-cat="dtco">
+    <div class="pub-item" data-year="2026" data-cat="dtco">
       <div class="pub-num">5</div>
       <div class="pub-body">
         <div class="pub-title">Au-MEDAL: Adaptable Grid Router with Metal Edge Detection And Layer Integration<a class="pub-link" href="https://ieeexplore.ieee.org/document/11420637/" target="_blank">[url]</a><a class="pub-link" href="assets/papers/au-medal-aspdac2026.pdf" target="_blank">[pdf]</a><a class="pub-link" href="https://github.com/ABKGroup/Au-MEDAL" target="_blank">[source]</a><span class="pub-award-badge">Best Paper Nominee</span></div>
@@ -767,7 +774,7 @@
         <div class="pub-date">Jan 19–22, 2026 · Hong Kong</div>
       </div>
     </div>
-    <div class="pub-item" data-cat="ml">
+    <div class="pub-item" data-year="2026" data-cat="ml">
       <div class="pub-num">6</div>
       <div class="pub-body">
         <div class="pub-title">A Heterogeneous Graph-based Gate Sizer Integrating Graph Attention Network and Transformer<a class="pub-link" href="https://ieeexplore.ieee.org/document/11420497/" target="_blank">[url]</a><a class="pub-link" href="assets/papers/gate-sizer-aspdac2026.pdf" target="_blank">[pdf]</a></div>
@@ -776,7 +783,7 @@
         <div class="pub-date">Jan 19–22, 2026 · Hong Kong</div>
       </div>
     </div>
-    <div class="pub-item" data-cat="dtco">
+    <div class="pub-item" data-year="2025" data-cat="dtco">
       <div class="pub-num">7</div>
       <div class="pub-body">
         <div class="pub-title">SO3-Cell: Standard Cell Layout Automation Framework for Simultaneous Optimization of Topology, Placement, and Routing<a class="pub-link" href="https://ieeexplore.ieee.org/document/11240677/" target="_blank">[url]</a><a class="pub-link" href="https://vlsicad.ucsd.edu/Publications/Conferences/418/c418.pdf" target="_blank">[pdf]</a><a class="pub-link" href="https://github.com/ckchengucsd/SO3-Cell" target="_blank">[source]</a></div>
@@ -786,7 +793,7 @@
         <div class="pub-date">Oct 26–30, 2025 · Munich, Germany</div>
       </div>
     </div>
-    <div class="pub-item" data-cat="dtco">
+    <div class="pub-item" data-year="2025" data-cat="dtco">
       <div class="pub-num">8</div>
       <div class="pub-body">
         <div class="pub-title">LIBMixer: An all-MLP Architecture for Cell Library Characterization towards Design Space Optimization<a class="pub-link" href="https://dl.acm.org/doi/10.1145/3658617.3697602" target="_blank">[url]</a><a class="pub-link" href="assets/papers/libmixer-aspdac2025.pdf" target="_blank">[pdf]</a></div>
@@ -795,7 +802,7 @@
         <div class="pub-date">Jan 20–23, 2025 · Tokyo, Japan</div>
       </div>
     </div>
-    <div class="pub-item" data-cat="parasitic">
+    <div class="pub-item" data-year="2025" data-cat="parasitic">
       <div class="pub-num">9</div>
       <div class="pub-body">
         <div class="pub-title">ParaFormer: A Hybrid Graph Neural Network and Transformer Approach for Pre-Routing Parasitic RC Prediction<a class="pub-link" href="https://dl.acm.org/doi/10.1145/3658617.3697599" target="_blank">[url]</a><a class="pub-link" href="assets/papers/paraformer-aspdac2025.pdf" target="_blank">[pdf]</a></div>
@@ -804,7 +811,7 @@
         <div class="pub-date">Jan 20–23, 2025 · Tokyo, Japan</div>
       </div>
     </div>
-    <div class="pub-item" data-cat="parasitic">
+    <div class="pub-item" data-year="2024" data-cat="parasitic">
       <div class="pub-num">10</div>
       <div class="pub-body">
         <div class="pub-title">RL-Fill: Timing-Aware Fill Insertion using Reinforcement Learning<a class="pub-link" href="https://dl.acm.org/doi/10.1145/3676536.3676795" target="_blank">[url]</a><a class="pub-link" href="assets/papers/rl-fill-iccad2024.pdf" target="_blank">[pdf]</a></div>
@@ -813,7 +820,7 @@
         <div class="pub-date">Oct 27–31, 2024 · New York, NY, USA</div>
       </div>
     </div>
-    <div class="pub-item" data-cat="ml">
+    <div class="pub-item" data-year="2024" data-cat="ml">
       <div class="pub-num">11</div>
       <div class="pub-body">
         <div class="pub-title">TA3D: Timing-Aware 3D IC Partitioning and Placement by Optimizing the Critical Path<a class="pub-link" href="https://dl.acm.org/doi/10.1145/3670474.3685957" target="_blank">[url]</a><a class="pub-link" href="assets/papers/ta3d-mlcad2024.pdf" target="_blank">[pdf]</a></div>
@@ -822,7 +829,7 @@
         <div class="pub-date">Sep 9–11, 2024 · Salt Lake City, UT, USA</div>
       </div>
     </div>
-    <div class="pub-item" data-cat="parasitic">
+    <div class="pub-item" data-year="2023" data-cat="parasitic">
       <div class="pub-num">12</div>
       <div class="pub-body">
         <div class="pub-title">Advanced Parasitic Capacitance Extraction using Active Learning<a class="pub-link" href="https://ieeexplore.ieee.org/document/10396354/" target="_blank">[url]</a><a class="pub-link" href="assets/papers/parasitic-capacitance-isocc2023.pdf" target="_blank">[pdf]</a><span class="pub-award-badge">Best Poster Award</span></div>
@@ -831,7 +838,7 @@
         <div class="pub-date">Oct 25–28, 2023 · Jeju, Korea</div>
       </div>
     </div>
-    <div class="pub-item" data-cat="dtco">
+    <div class="pub-item" data-year="2023" data-cat="dtco">
       <div class="pub-num">13</div>
       <div class="pub-body">
         <div class="pub-title">Multi-Source Transfer Learning for Design Technology Co-Optimization<a class="pub-link" href="https://ieeexplore.ieee.org/document/10244484/" target="_blank">[url]</a><a class="pub-link" href="assets/papers/multi-source-transfer-islped2023.pdf" target="_blank">[pdf]</a></div>
@@ -840,7 +847,7 @@
         <div class="pub-date">Aug 7–8, 2023 · Vienna, Austria</div>
       </div>
     </div>
-    <div class="pub-item" data-cat="ml">
+    <div class="pub-item" data-year="2023" data-cat="ml">
       <div class="pub-num">14</div>
       <div class="pub-body">
         <div class="pub-title">Routability Prediction using Deep Hierarchical Classification and Regression<a class="pub-link" href="https://ieeexplore.ieee.org/document/10136974/" target="_blank">[url]</a><a class="pub-link" href="assets/papers/routability-prediction-date2023.pdf" target="_blank">[pdf]</a></div>
@@ -849,7 +856,7 @@
         <div class="pub-date">Apr 17–19, 2023 · Antwerp, Belgium</div>
       </div>
     </div>
-    <div class="pub-item">
+    <div class="pub-item" data-year="2021">
       <div class="pub-num">15</div>
       <div class="pub-body">
         <div class="pub-title">Giga-sample Data Acquisition Method for High-speed DDR5 SDRAM<a class="pub-link" href="https://doi.org/10.1109/ISOCC53507.2021.9614030" target="_blank">[url]</a><a class="pub-link" href="assets/papers/giga-sample-ddr5-isocc2021.pdf" target="_blank">[pdf]</a></div>
@@ -1022,7 +1029,7 @@
   <div class="page" id="page-oss">
     <div class="page-title">Open-Source Contributions</div>
     <div>
-      <div class="oss-item">
+      <div class="oss-item" data-year="2026">
         <div class="oss-row">
           <span class="oss-name"><svg class="oss-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M13.983 11.078h2.119a.186.186 0 00.186-.185V9.006a.186.186 0 00-.186-.186h-2.119a.185.185 0 00-.185.185v1.888c0 .102.083.185.185.185m-2.954-5.43h2.118a.186.186 0 00.186-.186V3.574a.186.186 0 00-.186-.185h-2.118a.185.185 0 00-.185.185v1.888c0 .102.082.185.185.185m0 2.716h2.118a.187.187 0 00.186-.186V6.29a.186.186 0 00-.186-.185h-2.118a.185.185 0 00-.185.185v1.887c0 .102.082.185.185.186m-2.93 0h2.12a.186.186 0 00.184-.186V6.29a.185.185 0 00-.185-.185H8.1a.185.185 0 00-.185.185v1.887c0 .102.083.185.185.186m-2.964 0h2.119a.186.186 0 00.185-.186V6.29a.185.185 0 00-.185-.185H5.136a.186.186 0 00-.186.185v1.887c0 .102.084.185.186.186m5.893 2.715h2.118a.186.186 0 00.186-.185V9.006a.186.186 0 00-.186-.186h-2.118a.185.185 0 00-.185.185v1.888c0 .102.082.185.185.185m-2.93 0h2.12a.185.185 0 00.184-.185V9.006a.185.185 0 00-.184-.186h-2.12a.185.185 0 00-.184.185v1.888c0 .102.083.185.185.185m-2.964 0h2.119a.185.185 0 00.185-.185V9.006a.185.185 0 00-.184-.186h-2.12a.186.186 0 00-.186.186v1.887c0 .102.084.185.186.185m-2.92 0h2.12a.185.185 0 00.184-.185V9.006a.185.185 0 00-.184-.186h-2.12a.185.185 0 00-.184.185v1.888c0 .102.082.185.185.185M23.763 9.89c-.065-.051-.672-.51-1.954-.51-.338.001-.676.03-1.01.087-.248-1.7-1.653-2.53-1.716-2.566l-.344-.199-.226.327c-.284.438-.49.922-.612 1.43-.23.97-.09 1.882.403 2.661-.595.332-1.55.413-1.744.42H.751a.751.751 0 00-.75.748 11.376 11.376 0 00.692 4.062c.545 1.428 1.355 2.48 2.41 3.124 1.18.723 3.1 1.137 5.275 1.137.983.003 1.963-.086 2.93-.266a12.248 12.248 0 003.823-1.389c.98-.567 1.86-1.288 2.61-2.136 1.252-1.418 1.998-2.997 2.553-4.4h.221c1.372 0 2.215-.549 2.68-1.009.309-.293.55-.65.707-1.046l.098-.288Z"/></svg>AuDoPEDA<a class="pub-link" href="https://hub.docker.com/r/abkgroupucsd/audopeda" target="_blank">[link]</a></span>
           <span class="oss-badge"><img src="assets/logos/arxiv.png" alt="">arXiv 2026</span>
@@ -1030,21 +1037,37 @@
         <div class="oss-org">ABKGroup · UC San Diego · 2026</div>
         <div class="oss-desc">Autonomous, repository-grounded coding system that documents, plans, and patches OpenROAD with an LLM agent — achieving up to 5.9% wirelength, 10.0% clock period, and 19.4% power improvements with no human in the loop.</div>
       </div>
-      <div class="oss-item">
+      <div class="oss-item" data-year="2026">
         <div class="oss-row">
           <span class="oss-name"><svg class="oss-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>Cadence-Abstract-Flow<a class="pub-link" href="https://github.com/ABKGroup/Cadence-Abstract-Flow" target="_blank">[link]</a></span>
         </div>
         <div class="oss-org">ABKGroup · UC San Diego · 2026</div>
         <div class="oss-desc">Scripted standard-cell GDS-to-LEF abstraction flow built on Cadence Virtuoso Abstract Generator, with worked examples for five academic PDKs (NanGate45, ASAP7, IHP SG13G2, SO3, GT2N).</div>
       </div>
-      <div class="oss-item">
+      <div class="oss-item" data-year="2026">
         <div class="oss-row">
           <span class="oss-name"><svg class="oss-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>GDS-to-LEF<a class="pub-link" href="https://github.com/ABKGroup/GDS-to-LEF" target="_blank">[link]</a></span>
         </div>
         <div class="oss-org">ABKGroup · UC San Diego · 2026</div>
         <div class="oss-desc">KLayout-based standard-cell GDS-to-LEF converter, shipped with ready-to-use configurations for five academic PDKs (NanGate45, ASAP7, IHP SG13G2, SO3, GT2N).</div>
       </div>
-      <div class="oss-item">
+      <div class="oss-item" data-year="2026">
+        <div class="oss-row">
+          <span class="oss-name"><svg class="oss-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>ASAP7 MBFF Liberty Regeneration<a class="pub-link" href="https://github.com/The-OpenROAD-Project/OpenROAD-flow-scripts/pull/3888" target="_blank">[PR #3888]</a></span>
+          <span class="oss-badge">merged</span>
+        </div>
+        <div class="oss-org">The OpenROAD Project (DARPA-funded) · OpenROAD-flow-scripts · 2026</div>
+        <div class="oss-desc">Regenerated the ASAP7 multi-bit flip-flop Liberty libraries across 30 files, re-characterizing them from the DFFHQN single-bit baseline so that leakage and power values match their intended corner and VT context.</div>
+      </div>
+      <div class="oss-item" data-year="2026">
+        <div class="oss-row">
+          <span class="oss-name"><svg class="oss-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>ASAP7 SIMPLE_RVT_FF Liberty Re-extraction<a class="pub-link" href="https://github.com/The-OpenROAD-Project/asap7sc7p5t_28/pull/4" target="_blank">[PR #4]</a></span>
+          <span class="oss-badge">merged</span>
+        </div>
+        <div class="oss-org">The OpenROAD Project (DARPA-funded) · asap7sc7p5t_28 · 2026</div>
+        <div class="oss-desc">Re-extracted the NLDM, CCS, and CCSN Liberty files for SIMPLE_RVT_FF in the ASAP7 standard-cell PDK under corrected operating conditions (0.77 V, 0 °C), replacing corner-mismatched characterization data.</div>
+      </div>
+      <div class="oss-item" data-year="2025">
         <div class="oss-row">
           <span class="oss-name"><svg class="oss-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>Au-MEDAL<a class="pub-link" href="https://github.com/ABKGroup/Au-MEDAL" target="_blank">[link]</a></span>
           <span class="oss-badge">ASP-DAC 2026</span>
@@ -1052,21 +1075,14 @@
         <div class="oss-org">ABKGroup · UC San Diego · 2025–present</div>
         <div class="oss-desc">Open-source SMT-based standard cell router published at ASP-DAC 2026, nominated for Best Paper Award.</div>
       </div>
-      <div class="oss-item">
+      <div class="oss-item" data-year="2025">
         <div class="oss-row">
           <span class="oss-name"><svg class="oss-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>ASAP7-Synopsys-Enablement<a class="pub-link" href="https://github.com/ABKGroup/ASAP7-Synopsys-Enablement" target="_blank">[link]</a></span>
         </div>
         <div class="oss-org">ABKGroup · UC San Diego · 2025–present</div>
         <div class="oss-desc">First-ever Synopsys-based post-route extraction and timing analysis for the ASAP7 7nm open-source PDK, including calibrated TLU+ and NXTGRD files.</div>
       </div>
-      <div class="oss-item">
-        <div class="oss-row">
-          <span class="oss-name"><svg class="oss-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>OpenROAD ASAP7 Library Fixes<a class="pub-link" href="https://github.com/The-OpenROAD-Project/OpenROAD-flow-scripts" target="_blank">[link]</a></span>
-        </div>
-        <div class="oss-org">The OpenROAD Project (DARPA-funded) · 2025–2026</div>
-        <div class="oss-desc">Identified and corrected corner characterization errors in ASAP7 Liberty files; fully re-extracted MBFF timing libraries and contributed to OpenROAD-flow-scripts.</div>
-      </div>
-      <div class="oss-item">
+      <div class="oss-item" data-year="2025">
         <div class="oss-row">
           <span class="oss-name"><svg class="oss-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>SO3-Cell<a class="pub-link" href="https://github.com/ckchengucsd/SO3-Cell" target="_blank">[link]</a></span>
           <span class="oss-badge">ICCAD 2025</span>
@@ -1074,7 +1090,7 @@
         <div class="oss-org">UC San Diego · 2025</div>
         <div class="oss-desc">Open-source framework for simultaneous optimization of standard cell layout topology, placement, and routing, published at ICCAD 2025.</div>
       </div>
-      <div class="oss-item">
+      <div class="oss-item" data-year="2025">
         <div class="oss-row">
           <span class="oss-name"><svg class="oss-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>NanGate45-Synopsys-Enablement<a class="pub-link" href="https://github.com/ABKGroup/NanGate45-Synopsys-Enablement" target="_blank">[link]</a></span>
           <span class="oss-badge">★ 30+</span>
@@ -1104,12 +1120,28 @@
     document.querySelectorAll('.pub-filter button').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
     let idx = 1;
-    document.querySelectorAll('.pub-item').forEach(item => {
+    document.querySelectorAll('#page-pubs .pub-item[data-year]').forEach(item => {
       const show = cat === 'all' || item.dataset.cat === cat;
       item.classList.toggle('hidden', !show);
       if (show) item.querySelector('.pub-num').textContent = idx++;
     });
+    applyYearSeps('#page-pubs .pub-item[data-year]');
   }
+
+  function applyYearSeps(sel) {
+    const items = Array.from(document.querySelectorAll(sel)).filter(el => !el.classList.contains('hidden'));
+    items.forEach(el => el.classList.remove('year-end', 'year-start'));
+    items.forEach((el, i) => {
+      const next = items[i + 1];
+      if (next && next.dataset.year !== el.dataset.year) {
+        el.classList.add('year-end');
+        next.classList.add('year-start');
+      }
+    });
+  }
+
+  applyYearSeps('#page-pubs .pub-item[data-year]');
+  applyYearSeps('#page-oss .oss-item[data-year]');
 
   (function () {
     const hash = location.hash.replace('#', '') || 'about';
