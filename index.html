@@ -71,6 +71,66 @@
       transition: border-color 0.12s, color 0.12s;
     }
     .nav-item:hover { border-bottom-color: var(--border); color: var(--text); }
+
+    .search-wrap { position: relative; flex: 1 1 220px; max-width: 340px; }
+    .search-input {
+      width: 100%;
+      padding: 0.42rem 0.75rem;
+      font-family: inherit;
+      font-size: 0.95rem;
+      color: var(--text);
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+    }
+    .search-input::placeholder { color: var(--muted); }
+    .search-input:focus { outline: none; border-color: var(--accent); }
+
+    .search-results {
+      display: none;
+      position: absolute;
+      top: calc(100% + 0.4rem);
+      left: 0;
+      right: 0;
+      max-height: 60vh;
+      overflow-y: auto;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.09);
+      z-index: 200;
+    }
+    .search-results.open { display: block; }
+    .search-hitrow {
+      display: block;
+      width: 100%;
+      text-align: left;
+      padding: 0.6rem 0.8rem;
+      background: none;
+      border: none;
+      border-bottom: 1px solid var(--border);
+      font-family: inherit;
+      cursor: pointer;
+    }
+    .search-hitrow:last-child { border-bottom: none; }
+    .search-hitrow:hover, .search-hitrow.cursor { background: var(--sidebar-bg); }
+    .search-hit-tab {
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .search-hit-title {
+      font-size: 0.92rem;
+      color: var(--text);
+      line-height: 1.4;
+    }
+    .search-empty { padding: 0.7rem 0.8rem; font-size: 0.9rem; color: var(--muted); }
+
+    .search-flash { animation: searchFlash 1.6s ease-out; }
+    @keyframes searchFlash {
+      0%, 45% { background: #f0efe9; box-shadow: -0.7rem 0 0 #f0efe9, 0.7rem 0 0 #f0efe9; }
+      100% { background: transparent; box-shadow: none; }
+    }
     .nav-item.active {
       border-bottom-color: var(--accent);
       color: var(--accent);
@@ -598,6 +658,11 @@
 ══════════════════════════════ -->
 <header class="topnav">
   <div class="topnav-brand" onclick="showTab('about')">Jakang Lee</div>
+  <div class="search-wrap">
+    <input type="search" id="site-search" class="search-input" placeholder="Search keywords"
+           autocomplete="off" oninput="runSearch()" onkeydown="searchKey(event)" onfocus="runSearch()">
+    <div class="search-results" id="search-results"></div>
+  </div>
   <nav class="topnav-links">
     <button class="nav-item" data-tab="about"  onclick="showTab('about')">About</button>
     <button class="nav-item" data-tab="pubs"   onclick="showTab('pubs')">Publications</button>
@@ -1172,6 +1237,115 @@
 
   applyYearSeps('#page-pubs .pub-item[data-year]');
   applyYearSeps('#page-oss .oss-item[data-year]');
+
+  const TAB_LABEL = {
+    about: 'About', pubs: 'Publications', exp: 'Experience',
+    oss: 'Open Source', awards: 'Awards'
+  };
+
+  const SEARCH_INDEX = Array.from(
+    document.querySelectorAll('.pub-item, .exp-item, .oss-item, .award-item, .edu-item, .about-bio')
+  ).map(el => {
+    const page = el.closest('.page');
+    const tab = page ? page.id.replace('page-', '') : 'about';
+    const pick = sels => {
+      for (const s of sels.split(',')) {
+        const n = el.querySelector(s.trim());
+        if (!n) continue;
+        const c = n.cloneNode(true);
+        c.querySelectorAll('.pub-link, .pub-award-badge, .oss-badge, img').forEach(x => x.remove());
+        const t = c.textContent.replace(/\s+/g, ' ').trim();
+        if (t) return t;
+      }
+      return '';
+    };
+    return {
+      el: el,
+      tab: tab,
+      title: el.classList.contains('about-bio') ? 'Biography'
+        : pick('.pub-title, .oss-name, .exp-role, .exp-org, .award-title, .edu-school'),
+      sub: el.classList.contains('about-bio') ? ''
+        : pick('.pub-venue, .oss-org, .exp-period, .award-year, .edu-degree'),
+      text: el.innerText.toLowerCase()
+    };
+  });
+
+  let searchCursor = -1;
+
+  function searchMatches() {
+    const q = document.getElementById('site-search').value.trim().toLowerCase();
+    if (q.length < 2) return null;
+    const terms = q.split(/\s+/);
+    return SEARCH_INDEX.filter(r => terms.every(t => r.text.includes(t))).slice(0, 12);
+  }
+
+  function runSearch() {
+    const box = document.getElementById('search-results');
+    const hits = searchMatches();
+    searchCursor = -1;
+    if (hits === null) { box.classList.remove('open'); box.innerHTML = ''; return; }
+    if (!hits.length) {
+      box.innerHTML = '<div class="search-empty">No match</div>';
+      box.classList.add('open');
+      return;
+    }
+    box.innerHTML = '';
+    hits.forEach((hit, i) => {
+      const row = document.createElement('button');
+      row.className = 'search-hitrow';
+      row.type = 'button';
+      row.innerHTML = '<div class="search-hit-tab"></div><div class="search-hit-title"></div>';
+      row.children[0].textContent = TAB_LABEL[hit.tab] || hit.tab;
+      row.children[1].textContent = hit.sub ? hit.title + ' · ' + hit.sub : hit.title;
+      row.onclick = () => gotoHit(i);
+      box.appendChild(row);
+    });
+    box.classList.add('open');
+  }
+
+  function gotoHit(i) {
+    const hits = searchMatches();
+    if (!hits || !hits[i]) return;
+    const hit = hits[i];
+    showTab(hit.tab);
+    if (hit.el.classList.contains('hidden')) {
+      const allBtn = document.querySelector('.pub-filter button');
+      if (allBtn) filterPubs('all', allBtn);
+    }
+    closeSearch();
+    hit.el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    hit.el.classList.remove('search-flash');
+    void hit.el.offsetWidth;
+    hit.el.classList.add('search-flash');
+    setTimeout(() => hit.el.classList.remove('search-flash'), 1700);
+  }
+
+  function closeSearch() {
+    const box = document.getElementById('search-results');
+    box.classList.remove('open');
+    document.getElementById('site-search').blur();
+  }
+
+  function searchKey(e) {
+    const rows = document.querySelectorAll('.search-hitrow');
+    if (e.key === 'Escape') { closeSearch(); return; }
+    if (!rows.length) return;
+    if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+      e.preventDefault();
+      searchCursor = (searchCursor + (e.key === 'ArrowDown' ? 1 : rows.length - 1)) % rows.length;
+      rows.forEach((r, i) => r.classList.toggle('cursor', i === searchCursor));
+      rows[searchCursor].scrollIntoView({ block: 'nearest' });
+    } else if (e.key === 'Enter') {
+      e.preventDefault();
+      gotoHit(searchCursor < 0 ? 0 : searchCursor);
+    }
+  }
+
+  document.addEventListener('click', e => {
+    if (!e.target.closest('.search-wrap')) {
+      document.getElementById('search-results').classList.remove('open');
+    }
+  });
 
   (function () {
     const hash = location.hash.replace('#', '') || 'about';
