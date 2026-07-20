@@ -1160,6 +1160,14 @@
         next.parentElement.insertBefore(sep, next);
       }
     });
+    const last = items[items.length - 1];
+    if (last) {
+      last.classList.add('year-end');
+      const sep = document.createElement('div');
+      sep.className = 'year-sep';
+      sep.textContent = last.dataset.year;
+      last.parentElement.insertBefore(sep, last.nextSibling);
+    }
   }
 
   applyYearSeps('#page-pubs .pub-item[data-year]');
