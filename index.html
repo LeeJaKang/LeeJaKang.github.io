@@ -1156,7 +1156,7 @@
         next.classList.add('year-start');
         const sep = document.createElement('div');
         sep.className = 'year-sep';
-        sep.textContent = next.dataset.year;
+        sep.textContent = el.dataset.year;
         next.parentElement.insertBefore(sep, next);
       }
     });
