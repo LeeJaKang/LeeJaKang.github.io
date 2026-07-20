@@ -337,10 +337,25 @@
     .pub-item.hidden { display: none; }
 
     .pub-item.year-end, .oss-item.year-end {
-      border-bottom-color: var(--border-strong);
-      padding-bottom: 2.2rem;
+      border-bottom: none;
+      padding-bottom: 0.5rem;
     }
-    .pub-item.year-start, .oss-item.year-start { padding-top: 2.2rem; }
+    .pub-item.year-start, .oss-item.year-start { padding-top: 0.5rem; }
+
+    .year-sep {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+      margin: 1.5rem 0;
+      font-size: 0.82rem;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+    }
+    .year-sep::before, .year-sep::after {
+      content: "";
+      flex: 1;
+      border-top: 1px solid var(--border-strong);
+    }
 
     .pub-num {
       flex-shrink: 0;
@@ -1129,13 +1144,20 @@
   }
 
   function applyYearSeps(sel) {
-    const items = Array.from(document.querySelectorAll(sel)).filter(el => !el.classList.contains('hidden'));
-    items.forEach(el => el.classList.remove('year-end', 'year-start'));
+    const all = Array.from(document.querySelectorAll(sel));
+    if (!all.length) return;
+    all[0].parentElement.querySelectorAll('.year-sep').forEach(s => s.remove());
+    all.forEach(el => el.classList.remove('year-end', 'year-start'));
+    const items = all.filter(el => !el.classList.contains('hidden'));
     items.forEach((el, i) => {
       const next = items[i + 1];
       if (next && next.dataset.year !== el.dataset.year) {
         el.classList.add('year-end');
         next.classList.add('year-start');
+        const sep = document.createElement('div');
+        sep.className = 'year-sep';
+        sep.textContent = next.dataset.year;
+        next.parentElement.insertBefore(sep, next);
       }
     });
   }
