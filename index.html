@@ -626,7 +626,17 @@
     }
     @media (max-width: 480px) {
       html, body { font-size: 15.5px; }
+      .topnav { padding: 0.9rem 1.1rem; gap: 0.5rem 0.6rem; }
       .topnav-brand { font-size: 1.2rem; }
+      .search-wrap { flex: 1 1 140px; max-width: 100%; }
+      .search-results { right: auto; width: calc(100vw - 2.2rem); }
+      .topnav-links {
+        flex-wrap: wrap;
+        overflow-x: visible;
+        max-width: 100%;
+        row-gap: 0.15rem;
+      }
+      .nav-item { padding: 0.3rem 0.5rem; font-size: 1rem; }
       .page-title { font-size: 1.5rem; margin-bottom: 1.5rem; }
       .profile-name { font-size: 1.2rem; }
       .about-grid { gap: 1.5rem; }
@@ -1370,12 +1380,11 @@
     const base = 'https://wkrkd95.goatcounter.com/counter/';
     const el = document.getElementById('visit-counter');
     const today = new Date().toISOString().slice(0, 10);
-    // GoatCounter parses "end" as midnight of that date, so end must be the
-    // next day to include all of "today" (otherwise only ~00:00-01:00 UTC counts).
-    const tomorrow = new Date(Date.now() + 86400000).toISOString().slice(0, 10);
+    // "start" alone runs to the present; adding "end" drops the current day's hits.
+    // GoatCounter caches these responses for up to 4 hours, so the day figure lags.
     Promise.all([
-      fetch(base + 'TOTAL.json', { cache: 'no-store' }).then(r => r.json()).catch(() => ({ count: '—' })),
-      fetch(base + 'TOTAL.json?start=' + today + '&end=' + tomorrow, { cache: 'no-store' }).then(r => r.json()).catch(() => ({ count: '—' })),
+      fetch(base + 'TOTAL.json', { cache: 'no-store' }).then(r => r.json()).catch(() => ({ count: '-' })),
+      fetch(base + 'TOTAL.json?start=' + today, { cache: 'no-store' }).then(r => r.json()).catch(() => ({ count: '-' })),
     ]).then(([total, day]) => {
       el.textContent = 'Today: ' + day.count + ' · Total: ' + total.count;
     });
