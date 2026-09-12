@@ -589,16 +589,26 @@
     .oss-badges { display: inline-flex; align-items: center; gap: 0.4rem; flex-wrap: wrap; }
     .oss-org { font-size: 0.9rem; color: var(--muted); margin-bottom: 0.4rem; }
     .oss-desc { font-size: 0.97rem; color: var(--sub); line-height: 1.75; }
-    .oss-sublist { list-style: none; margin: 0.55rem 0 0; padding: 0; }
+    .oss-sublist { list-style: none; margin: 0.55rem 0 0; padding: 0; counter-reset: oss-sub; }
     .oss-sublist li {
       position: relative;
-      padding-left: 1rem;
+      padding-left: 1.35rem;
       margin-top: 0.4rem;
+      counter-increment: oss-sub;
       font-size: 0.92rem;
       color: var(--sub);
       line-height: 1.7;
     }
-    .oss-sublist li::before { content: "\00B7"; position: absolute; left: 0.2rem; color: var(--muted); }
+    .oss-sublist li::before {
+      content: counter(oss-sub) ".";
+      position: absolute;
+      left: 0.15rem;
+      top: 0;
+      font-size: 0.78rem;
+      line-height: 2.0;
+      font-variant-numeric: tabular-nums;
+      color: var(--muted);
+    }
     .oss-submeta {
       font-size: 0.82rem;
       color: var(--muted);
